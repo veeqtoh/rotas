@@ -22,6 +22,12 @@ return new class extends Migration
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->string('description');
+            $table->timestamp('clock_in_time')->nullable();
+            $table->timestamp('clock_out_time')->nullable();
+            $table->string('clock_in_location')->nullable();
+            $table->string('clock_out_location')->nullable();
+            $table->string('clock_in_ip')->nullable();
+            $table->string('clock_out_ip')->nullable();
             $table->timestamps();
         });
     }
