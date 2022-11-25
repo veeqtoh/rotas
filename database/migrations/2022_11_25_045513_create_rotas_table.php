@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('rotas', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
+            $table->date('date');
             $table->timestamps();
         });
     }

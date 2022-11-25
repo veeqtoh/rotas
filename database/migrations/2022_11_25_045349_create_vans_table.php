@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('vans', function (Blueprint $table) {
             $table->id();
+            $table->string('brand');
+            $table->string('model');
+            $table->string('year')->nullable();
+            $table->string('reg');
             $table->timestamps();
         });
     }
