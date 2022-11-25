@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rota;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class RotaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Rota::factory(1)->create();
     }
 }

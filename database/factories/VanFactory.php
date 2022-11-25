@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Provider\Fakecar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class VanFactory extends Factory
      */
     public function definition()
     {
+        $faker = (new \Faker\Factory())::create();
+        $faker->addProvider(new Fakecar($faker));
+
+        $vehicle = $faker->vehicleArray;
+
         return [
-            //
+            'brand' => $vehicle['brand'],
+            'model' => $vehicle['model'],
+            'year' => $faker->year(),
+            'reg' => $faker->vehicleRegistration(),
         ];
     }
 }

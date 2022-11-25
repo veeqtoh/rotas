@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Driver;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DriverSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class DriverSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Driver::factory(10)->create();
     }
 }

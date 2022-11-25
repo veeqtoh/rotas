@@ -17,7 +17,7 @@ class RotaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'date' => now(),
         ];
     }
 }

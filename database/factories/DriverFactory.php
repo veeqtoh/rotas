@@ -16,8 +16,15 @@ class DriverFactory extends Factory
      */
     public function definition()
     {
+        $genders = ['m','f'];
         return [
-            //
+            'user_id' => rand(1,10),
+            'first_name' => fake()->firstName(),
+            'other_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'gender' => $genders[array_rand($genders)],
+            'phone' => fake()->phoneNumber(),
+            'avatar' => fake()->imageUrl($width = 640, $height = 480),
         ];
     }
 }
