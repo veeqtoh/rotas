@@ -12,7 +12,12 @@ class Driver extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'first_name', 'other_name', 'last_name', 'gender', 'phone', 'avatar'];
+    protected $guarded = [];
+
+    protected $casts = [
+        'employment_date' => 'datetime',
+        'date_of_birth' => 'date',
+    ];
 
     public function user(): BelongsTo
     {

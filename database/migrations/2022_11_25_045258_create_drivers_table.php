@@ -20,7 +20,15 @@ return new class extends Migration
             $table->string('other_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('gender')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone_1')->nullable();
+            $table->string('phone_2')->nullable();
+            $table->string('personal_email')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('nationality')->nullable();
+            $table->date('employment_date')->nullable();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->enum('marital_status', ['single', 'married', 'divorced', 'Rather Not Say'])->nullable();
             $table->string('avatar')->nullable();
             $table->timestamps();
         });
