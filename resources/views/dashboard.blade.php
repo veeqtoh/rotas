@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-    <title>Dashboard | N.U.E Portal</title>
+    <title>Dashboard  - Admin portal</title>
 @endsection
 
 @section('dashboard')
@@ -22,7 +22,7 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                        <a class="btn btn-primary" href="{{ route('it.addUser') }}">
+                        <a class="btn btn-primary" href="{{ route('addDriver') }}">
                             <i class="bi-person-plus-fill me-1"></i> Add users
                         </a>
                     </div>
@@ -36,13 +36,13 @@
             <div class="row">
                 <div class="mb-3 col-sm-6 col-lg-3 mb-lg-5">
                     <!-- Card -->
-                    <a class="card card-hover-shadow h-100" href="{{ route('it.users') }}">
+                    <a class="card card-hover-shadow h-100" href="{{ route('drivers') }}">
                         <div class="card-body">
                             <h6 class="card-subtitle">Total Users</h6>
 
                             <div class="mb-1 row align-items-center gx-2">
                                 <div class="col-6">
-                                    <h2 class="card-title text-inherit">{{ $usersCount }}</h2>
+                                    {{--  <h2 class="card-title text-inherit">{{ $usersCount }}</h2>  --}}
                                 </div>
                                 <!-- End Col -->
 
@@ -445,7 +445,7 @@
                                     </div>
                                 </td>
                                 <td class="table-column-ps-0">
-                                    <a class="d-flex align-items-center" href="{{ route('it.profile', $user) }}">
+                                    <a class="d-flex align-items-center" href="{{ route('profile', $user) }}">
                                         <div class="flex-shrink-0">
                                             <div class="avatar avatar-sm avatar-soft-danger avatar-circle">
                                                 {{--  <span class="avatar-initials">M</span>  --}}
