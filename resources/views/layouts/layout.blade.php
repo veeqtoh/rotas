@@ -3544,7 +3544,7 @@
     <!-- JS Plugins Init. -->
     <script>
         (function() {
-        window.onload = function () {
+          window.onload = function () {
 
 
             // INITIALIZATION OF NAVBAR VERTICAL ASIDE
@@ -3554,21 +3554,7 @@
 
             // INITIALIZATION OF FORM SEARCH
             // =======================================================
-            const HSFormSearchInstance = new HSFormSearch('.js-form-search')
-
-            if (HSFormSearchInstance.collection.length) {
-            HSFormSearchInstance.getItem(1).on('close', function (el) {
-                el.classList.remove('top-0')
-            })
-
-            document.querySelector('.js-form-search-mobile-toggle').addEventListener('click', e => {
-                let dataOptions = JSON.parse(e.currentTarget.getAttribute('data-hs-form-search-options')),
-                $menu = document.querySelector(dataOptions.dropMenuElement)
-
-                $menu.classList.add('top-0')
-                $menu.style.left = 0
-            })
-            }
+            new HSFormSearch('.js-form-search')
 
 
             // INITIALIZATION OF BOOTSTRAP DROPDOWN
@@ -3576,129 +3562,76 @@
             HSBsDropdown.init()
 
 
-            // INITIALIZATION OF CHARTJS
+            // INITIALIZATION OF FILE ATTACH
             // =======================================================
-            Chart.plugins.unregister(ChartDataLabels);
-            HSCore.components.HSChartJS.init('.js-chart')
+            new HSFileAttach('.js-file-attach')
 
 
-            // INITIALIZATION OF CHARTJS
+            // INITIALIZATION OF STEP FORM
             // =======================================================
-            HSCore.components.HSChartJS.init('#updatingBarChart')
-            const updatingBarChart = HSCore.components.HSChartJS.getItem('updatingBarChart')
-
-            // Call when tab is clicked
-            document.querySelectorAll('[data-bs-toggle="chart-bar"]').forEach(item => {
-            item.addEventListener('click', e => {
-                let keyDataset = e.currentTarget.getAttribute('data-datasets')
-
-                const styles = HSCore.components.HSChartJS.getTheme('updatingBarChart', HSThemeAppearance.getAppearance())
-
-                if (keyDataset === 'lastWeek') {
-                updatingBarChart.data.labels = ["Apr 22", "Apr 23", "Apr 24", "Apr 25", "Apr 26", "Apr 27", "Apr 28", "Apr 29", "Apr 30", "Apr 31"];
-                updatingBarChart.data.datasets = [
-                    {
-                    "data": [120, 250, 300, 200, 300, 290, 350, 100, 125, 320],
-                    "backgroundColor": styles.data.datasets[0].backgroundColor,
-                    "hoverBackgroundColor": styles.data.datasets[0].hoverBackgroundColor,
-                    "borderColor": styles.data.datasets[0].borderColor
-                    },
-                    {
-                    "data": [250, 130, 322, 144, 129, 300, 260, 120, 260, 245, 110],
-                    "backgroundColor": styles.data.datasets[1].backgroundColor,
-                    "borderColor": styles.data.datasets[1].borderColor
-                    }
-                ];
-                updatingBarChart.update();
-                } else {
-                updatingBarChart.data.labels = ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"];
-                updatingBarChart.data.datasets = [
-                    {
-                    "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
-                    "backgroundColor": styles.data.datasets[0].backgroundColor,
-                    "hoverBackgroundColor": styles.data.datasets[0].hoverBackgroundColor,
-                    "borderColor": styles.data.datasets[0].borderColor
-                    },
-                    {
-                    "data": [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120],
-                    "backgroundColor": styles.data.datasets[1].backgroundColor,
-                    "borderColor": styles.data.datasets[1].borderColor
-                    }
-                ]
-                updatingBarChart.update();
-                }
-            })
+            new HSStepForm('.js-step-form', {
+              finish: () => {
+                document.getElementById("addUserStepFormProgress").style.display = 'none'
+                document.getElementById("addUserStepProfile").style.display = 'none'
+                document.getElementById("addUserStepBillingAddress").style.display = 'none'
+                document.getElementById("addUserStepConfirmation").style.display = 'none'
+                document.getElementById("successMessageContent").style.display = 'block'
+                scrollToTop('#header');
+                const formContainer = document.getElementById('formContainer')
+              },
+              onNextStep: function () {
+                scrollToTop()
+              },
+              onPrevStep: function () {
+                scrollToTop()
+              }
             })
 
-
-            // INITIALIZATION OF CHARTJS
-            // =======================================================
-            HSCore.components.HSChartJS.init('.js-chart-datalabels', {
-            plugins: [ChartDataLabels],
-            options: {
-                plugins: {
-                datalabels: {
-                    anchor: function (context) {
-                    var value = context.dataset.data[context.dataIndex];
-                    return value.r < 20 ? 'end' : 'center';
-                    },
-                    align: function (context) {
-                    var value = context.dataset.data[context.dataIndex];
-                    return value.r < 20 ? 'end' : 'center';
-                    },
-                    color: function (context) {
-                    var value = context.dataset.data[context.dataIndex];
-                    return value.r < 20 ? context.dataset.backgroundColor : context.dataset.color;
-                    },
-                    font: function (context) {
-                    var value = context.dataset.data[context.dataIndex],
-                        fontSize = 25;
-
-                    if (value.r > 50) {
-                        fontSize = 35;
-                    }
-
-                    if (value.r > 70) {
-                        fontSize = 55;
-                    }
-
-                    return {
-                        weight: 'lighter',
-                        size: fontSize
-                    };
-                    },
-                    offset: 2,
-                    padding: 0
-                }
-                }
+            function scrollToTop(el = '.js-step-form') {
+              el = document.querySelector(el)
+              window.scrollTo({
+                top: (el.getBoundingClientRect().top + window.scrollY) - 30,
+                left: 0,
+                behavior: 'smooth'
+              })
             }
+
+
+            // INITIALIZATION OF ADD FIELD
+            // =======================================================
+            new HSAddField('.js-add-field', {
+              addedField: field => {
+                HSCore.components.HSTomSelect.init(field.querySelector('.js-select-dynamic'))
+                HSCore.components.HSMask.init(field.querySelector('.js-input-mask'))
+              }
             })
+
 
             // INITIALIZATION OF SELECT
             // =======================================================
             HSCore.components.HSTomSelect.init('.js-select', {
-                render: {
+              render: {
                 'option': function (data, escape) {
-                    return data.optionTemplate || `<div>${data.text}</div>>`
+                  return data.optionTemplate || `<div>${data.text}</div>>`
                 },
                 'item': function (data, escape) {
-                    return data.optionTemplate || `<div>${data.text}</div>>`
+                  return data.optionTemplate || `<div>${data.text}</div>>`
                 }
-                }
+              }
             })
 
 
-            // INITIALIZATION OF CLIPBOARD
+            // INITIALIZATION OF INPUT MASK
             // =======================================================
-            HSCore.components.HSClipboard.init('.js-clipboard')
-        }
+            HSCore.components.HSMask.init('.js-input-mask')
+          }
         })()
-    </script>
+      </script>
 
-    <!-- Style Switcher JS -->
+      <!-- Style Switcher JS -->
 
-    <script>
-        (function () {
+      <script>
+          (function () {
             // STYLE SWITCHER
             // =======================================================
             const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
@@ -3706,21 +3639,21 @@
 
             // Function to set active style in the dorpdown menu and set icon for dropdown trigger
             const setActiveStyle = function () {
-            $variants.forEach($item => {
+              $variants.forEach($item => {
                 if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
-                $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
-                return $item.classList.add('active')
+                  $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+                  return $item.classList.add('active')
                 }
 
                 $item.classList.remove('active')
-            })
+              })
             }
 
             // Add a click event to all items of the dropdown to set the style
             $variants.forEach(function ($item) {
-            $item.addEventListener('click', function () {
+              $item.addEventListener('click', function () {
                 HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
-            })
+              })
             })
 
             // Call the setActiveStyle on load page
@@ -3728,13 +3661,11 @@
 
             // Add event listener on change style to call the setActiveStyle function
             window.addEventListener('on-hs-appearance-change', function () {
-            setActiveStyle()
+              setActiveStyle()
             })
-        })()
-    </script>
+          })()
+        </script>
 
-    <!-- End Style Switcher JS -->
-
-</body>
-
+      <!-- End Style Switcher JS -->
+    </body>
 </html>
