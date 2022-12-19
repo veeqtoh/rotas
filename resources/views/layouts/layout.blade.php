@@ -306,15 +306,74 @@
                             </div>
                             <!-- End Collapse -->
 
+                            <!-- Collapse -->
+                            <div class="nav-item">
+                                <a
+                                    class="nav-link dropdown-toggle @yield('drivers')"
+                                    href="#navbarVerticalMenuPagesUsersMenu"
+                                    role="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarVerticalMenuPagesUsersMenu"
+                                    aria-expanded="true"
+                                    aria-controls="navbarVerticalMenuPagesUsersMenu"
+                                >
+                                    <i class="bi-people nav-icon"></i>
+                                    <span class="nav-link-title">Rotas</span>
+                                </a>
+
+                                <div id="navbarVerticalMenuPagesUsersMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <a class="nav-link @yield('drivers')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
+                                    <a class="nav-link @yield('addDriver')" href="{{ route('addDriver') }}">Add Driver </a>
+                                </div>
+                            </div>
+                            <!-- End Collapse -->
+
+                            <!-- Collapse -->
+                            <div class="nav-item">
+                                <a
+                                    class="nav-link dropdown-toggle @yield('drivers')"
+                                    href="#navbarVerticalMenuPagesUsersMenu"
+                                    role="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarVerticalMenuPagesUsersMenu"
+                                    aria-expanded="true"
+                                    aria-controls="navbarVerticalMenuPagesUsersMenu"
+                                >
+                                    <i class="bi-truck nav-icon"></i>
+                                    <span class="nav-link-title">Vans</span>
+                                </a>
+
+                                <div id="navbarVerticalMenuPagesUsersMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <a class="nav-link @yield('drivers')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
+                                    <a class="nav-link @yield('addDriver')" href="{{ route('addDriver') }}">Add Driver </a>
+                                </div>
+                            </div>
+                            <!-- End Collapse -->
+
+                            <!-- Collapse -->
+                            <div class="nav-item">
+                                <a
+                                    class="nav-link dropdown-toggle @yield('drivers')"
+                                    href="#navbarVerticalMenuPagesUsersMenu"
+                                    role="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarVerticalMenuPagesUsersMenu"
+                                    aria-expanded="true"
+                                    aria-controls="navbarVerticalMenuPagesUsersMenu"
+                                >
+                                    <i class="bi-people nav-icon"></i>
+                                    <span class="nav-link-title">Admins</span>
+                                </a>
+
+                                <div id="navbarVerticalMenuPagesUsersMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <a class="nav-link @yield('drivers')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
+                                    <a class="nav-link @yield('addDriver')" href="{{ route('addDriver') }}">Add Driver </a>
+                                </div>
+                            </div>
+                            <!-- End Collapse -->
+
                             <span class="mt-4 dropdown-header">User Functions</span>
                             <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-                            <div class="nav-item">
-                                <a class="nav-link" href="javascript:;" data-placement="left">
-                                    <i class="bi-book nav-icon"></i>
-                                    <span class="nav-link-title">My Payslip <span class="badge bg-primary rounded-pill ms-1">v2.0</span></span>
-                                </a>
-                            </div>
 
                             <a class="nav-link @yield('profile')" href="#!">
                                 <i class="bi-person nav-icon"></i>
@@ -1309,7 +1368,7 @@
                                             <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="usersMegaMenu" style="min-width: 14rem;">
                                                 <a class="dropdown-item " href="users.html">Overview</a>
                                                 <a class="dropdown-item " href="users-leaderboard.html">Leaderboard</a>
-                                                <a class="dropdown-item " href="users-add-user.html">Add User <span class="badge bg-info rounded-pill ms-1">Hot</span></a>
+                                                <a class="dropdown-item " href="users-add-user.html">Add Driver <span class="badge bg-info rounded-pill ms-1">Hot</span></a>
                                             </div>
                                         </div>
                                         <!-- End Users -->
@@ -2388,7 +2447,7 @@
                                             <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="usersMegaMenu" style="min-width: 14rem;">
                                                 <a class="dropdown-item " href="users.html">Overview</a>
                                                 <a class="dropdown-item " href="users-leaderboard.html">Leaderboard</a>
-                                                <a class="dropdown-item " href="users-add-user.html">Add User <span class="badge bg-info rounded-pill ms-1">Hot</span></a>
+                                                <a class="dropdown-item " href="users-add-user.html">Add Driver <span class="badge bg-info rounded-pill ms-1">Hot</span></a>
                                             </div>
                                         </div>
                                         <!-- End Users -->

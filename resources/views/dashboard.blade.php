@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-    <title>Dashboard  - Admin portal</title>
+    <title>Dashboard - Admin portal</title>
 @endsection
 
 @section('dashboard')

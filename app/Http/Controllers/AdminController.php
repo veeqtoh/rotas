@@ -12,4 +12,9 @@ class AdminController extends Controller
     {
         return view('dashboard');
     }
+
+    public function addDriver(): View
+    {
+        return view('add-driver');
+    }
 }
