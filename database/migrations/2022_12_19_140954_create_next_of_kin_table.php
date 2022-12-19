@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('next_of_kin', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('driver_id')->constrained()->cascadeOnDelete();
+            $table->string('title')->nullable();
+            $table->string('full_name')->nullable();
+            $table->string('relationship')->nullable();
+            $table->string('phone_number_1')->nullable();
+            $table->string('phone_number_2')->nullable();
+            $table->string('email_address')->nullable();
+            $table->string('residential_address')->nullable();
             $table->timestamps();
         });
     }

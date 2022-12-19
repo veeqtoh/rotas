@@ -23,7 +23,7 @@
 
                     <div class="col-auto">
                         <a class="btn btn-primary" href="{{ route('addDriver') }}">
-                            <i class="bi-person-plus-fill me-1"></i> Add users
+                            <i class="bi-person-plus-fill me-1"></i> Add drivers
                         </a>
                     </div>
                     <!-- End Col -->
