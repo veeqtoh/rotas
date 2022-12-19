@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'driver']);
             $table->timestamp('last_login')->nullable();
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

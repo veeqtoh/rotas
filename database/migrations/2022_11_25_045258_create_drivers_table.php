@@ -29,7 +29,6 @@ return new class extends Migration
             $table->string('address_line_1')->nullable();
             $table->string('address_line_2')->nullable();
             $table->enum('marital_status', ['single', 'married', 'divorced', 'Rather Not Say'])->nullable();
-            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

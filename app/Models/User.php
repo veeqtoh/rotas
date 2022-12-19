@@ -20,7 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['employee_id', 'role', 'email', 'username', 'password', 'last_login'];
+    protected $fillable = ['employee_id', 'role', 'email', 'username', 'password', 'last_login', 'avatar'];
 
     public static function booted()
     {
@@ -56,5 +56,12 @@ class User extends Authenticatable
     public function adminProfile(): HasOne
     {
         return $this->hasOne(Admin::class);
+    }
+
+    public function avatarUrl()
+    {
+        return $this->avatar
+            ? Storage::disk('avatars')->url($this->avatar)
+            : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 }
