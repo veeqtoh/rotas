@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect()->route('dashboard');
-// });
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -25,14 +25,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'admin'],], function(){
     Route::controller(AdminController::class)->group(function () {
-        Route::get('/', 'dashboard')->name('dashboard');
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::get('drivers', 'drivers')->name('drivers');
         Route::get('admins', 'admins')->name('admins');
         Route::get('add-user', 'addUser')->name('addDriver');
         Route::get('add-admin', 'addAdmin')->name('addAdmin');
     });
     Route::controller(ProfileController::class)->group(function () {
-        Route::get('/', 'dashboard')->name('dashboard');
         Route::get('/profile', 'edit')->name('profile.edit');
         Route::patch('/profile', 'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');

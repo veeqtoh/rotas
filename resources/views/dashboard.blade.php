@@ -107,7 +107,7 @@
 
                             <div class="mb-1 row align-items-center gx-2">
                                 <div class="col-6">
-                                    <h2 class="card-title text-inherit">{{ $productsCount }}</h2>
+                                    {{--  <h2 class="card-title text-inherit">{{ $productsCount }}</h2>  --}}
                                 </div>
                                 <!-- End Col -->
 
@@ -172,7 +172,7 @@
 
                             <div class="mb-1 row align-items-center gx-2">
                                 <div class="col-6">
-                                    <h2 class="card-title text-inherit">{{ $ordersCount }}</h2>
+                                    {{--  <h2 class="card-title text-inherit">{{ $ordersCount }}</h2>  --}}
                                 </div>
                                 <!-- End Col -->
 
@@ -436,39 +436,7 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($allUsers as $user)
-                            <tr>
-                                <td class="table-column-pe-0">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="usersDataCheck16">
-                                        <label class="form-check-label" for="usersDataCheck16"></label>
-                                    </div>
-                                </td>
-                                <td class="table-column-ps-0">
-                                    <a class="d-flex align-items-center" href="{{ route('profile', $user) }}">
-                                        <div class="flex-shrink-0">
-                                            <div class="avatar avatar-sm avatar-soft-danger avatar-circle">
-                                                {{--  <span class="avatar-initials">M</span>  --}}
-                                                <img class="avatar-img" src="{{ $user->avatarUrl() }}" alt="{{ $user->username }}">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-0 text-inherit">{{ ($user->staff) ? $user->staff->first_name.' '.$user->staff->last_name : $user->customer->first_name.' '.$user->customer->last_name }}</h5>
-                                        </div>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span class="legend-indicator {{  ($user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($user->isActive()) ? 'Active' : 'Inactive' }}
-                                </td>
-                                <td>
-                                    <span class="mb-0 d-block h5">{{ ($user->staff) ? 'Staff' : 'Customer' }}</span>
-                                    <span class="d-block fs-5">{{ ($user->staff) ? $user->staff->department->name : ''}}</span>
-                                </td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at->diffForHumans() }}</td>
-                                <td>{{ $user->last_login ? $user->last_login->diffForHumans() : 'Never logged in' }}</td>
-                            </tr>
-                            @endforeach
+
 
                         </tbody>
                     </table>

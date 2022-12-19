@@ -199,7 +199,7 @@
     <header id="header" class="bg-white navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered">
         <div class="navbar-nav-wrap">
             <!-- Logo -->
-            <a class="navbar-brand" href="{{ route('store.index') }}" aria-label="N.U.E">
+            <a class="navbar-brand" href="#!" aria-label="Rotas">
                 <img class="navbar-brand-logo" src="{{ asset('admin-assets/img/logos/main.png') }}" alt="Logo" data-hs-theme-appearance="default">
                 <img class="navbar-brand-logo" src="{{ asset('admin-assets/img/logos/main.png') }}" alt="Logo" data-hs-theme-appearance="dark">
                 <img class="navbar-brand-logo-mini" src="{{ asset('admin-assets/img/logos/main.png') }}" alt="Logo" data-hs-theme-appearance="default">
@@ -218,14 +218,14 @@
 
                 <!-- Navbar Search tool -->
                 <div class="dropdown ms-2">
-                    @livewire('backend.search', ['user' => auth()->user()], key(auth()->user->id))
+                    {{--  @livewire('backend.search', ['user' => auth()->user()], key(auth()->user->id))  --}}
                 </div>
                 <!-- End Navbar Search tool -->
             </div>
 
             <div class="navbar-nav-wrap-content-end">
                 <!-- Navbar -->
-                @livewire('backend.topbar', ['user' => auth()->user()], key(auth()->user()->id))
+                {{--  @livewire('backend.topbar', ['user' => auth()->user()], key(auth()->user()->id))  --}}
                 <!-- End Navbar -->
             </div>
         </div>
@@ -237,7 +237,7 @@
             <div class="navbar-vertical-footer-offset">
                 <!-- Logo -->
 
-                <a class="navbar-brand" href="{{ route('store.index') }}" aria-label="Front">
+                <a class="navbar-brand" href="#!" aria-label="Front">
                     <img class="navbar-brand-logo" src="{{ asset('admin-assets/img/logos/main.png') }}" alt="Logo" data-hs-theme-appearance="default" style="min-width: 3.2rem; max-width: 3.2rem;" />
                     <img class="navbar-brand-logo" src="{{ asset('admin-assets/img/logos/main-white.png') }}" alt="Logo" data-hs-theme-appearance="dark" style="min-width: 3.2rem; max-width: 3.2rem;" />
                     <img class="navbar-brand-logo-mini" src="{{ asset('admin-assets/img/logos/main.png') }}" alt="Logo" data-hs-theme-appearance="default" style="min-width: 3.2rem; max-width: 3.2rem;" />
@@ -272,13 +272,13 @@
                         <!-- Collapse -->
 
                         <div class="nav-item">
-                            <a class="nav-link @yield('dashboard')" href="{{ route('it.dashboard') }}" data-placement="left">
+                            <a class="nav-link @yield('dashboard')" href="{{ route('dashboard') }}" data-placement="left">
                                 <i class="bi-house-door nav-icon"></i>
                                 <span class="nav-link-title">Dashboard</span>
                             </a>
                         </div>
 
-                        <span class="mt-4 dropdown-header">IT Core Functions</span>
+                        <span class="mt-4 dropdown-header">Admin Core Functions</span>
                         <small class="bi-three-dots nav-subtitle-replacer"></small>
 
                         <!-- Collapse -->
@@ -287,7 +287,7 @@
                             <!-- Collapse -->
                             <div class="nav-item">
                                 <a
-                                    class="nav-link dropdown-toggle @yield('users') @yield('addUser') @yield('staff') @yield('crew') @yield('customers')"
+                                    class="nav-link dropdown-toggle @yield('drivers')"
                                     href="#navbarVerticalMenuPagesUsersMenu"
                                     role="button"
                                     data-bs-toggle="collapse"
@@ -296,178 +296,12 @@
                                     aria-controls="navbarVerticalMenuPagesUsersMenu"
                                 >
                                     <i class="bi-people nav-icon"></i>
-                                    <span class="nav-link-title">Users</span>
+                                    <span class="nav-link-title">Drivers</span>
                                 </a>
 
                                 <div id="navbarVerticalMenuPagesUsersMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link @yield('users')" href="{{ route('it.users') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
-                                    <a class="nav-link @yield('staff')" href="{{ route('it.staffUsers') }}">Staff </a>
-                                    <a class="nav-link @yield('crew')" href="{{ route('it.crewUsers') }}">Crew </a>
-                                    <a class="nav-link @yield('customers')" href="{{ route('it.customersUsers') }}">Customers </a>
-                                    <a class="nav-link @yield('addUser')" href="{{ route('it.addUser') }}">Add User </a>
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
-                                    class="nav-link dropdown-toggle @yield('departments') @yield('addDepartment')"
-                                    href="#navbarVerticalMenuPagesDepartmentsMenu"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuPagesDepartmentsMenu"
-                                    aria-expanded="false"
-                                    aria-controls="navbarVerticalMenuPagesDepartmentsMenu"
-                                >
-                                    <i class="bi-stack nav-icon"></i>
-                                    <span class="nav-link-title">Departments</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuPagesDepartmentsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link @yield('departments')" href="{{ route('it.departments') }}">Overview </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">Add Department </a>
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
-                                    class="nav-link dropdown-toggle @yield('fleet') @yield('addVessel')"
-                                    href="#navbarVerticalMenuPagesVesselsMenu"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuPagesVesselsMenu"
-                                    aria-expanded="false"
-                                    aria-controls="navbarVerticalMenuPagesVesselsMenu"
-                                >
-                                    <i class="bi-shield-lock nav-icon"></i>
-                                    <span class="nav-link-title">Fleet</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuPagesVesselsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link @yield('departments')" href="{{ route('it.fleet') }}">Overview </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">NUE Defender </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">NUE Defender I </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">SVS Guardsman </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">NUE Swift </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">MV Lince </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">NUE Strider </a>
-                                    <a class="nav-link @yield('addDepartment')" href="{{ route('it.addDepartment') }}">NUE Ferula </a>
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
-                                    class="nav-link dropdown-toggle @yield('documents')"
-                                    href="#navbarVerticalMenuPagesProjectsMenu"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuPagesProjectsMenu"
-                                    aria-expanded="false"
-                                    aria-controls="navbarVerticalMenuPagesProjectsMenu"
-                                >
-                                    <i class="bi-stickies nav-icon"></i>
-                                    <span class="nav-link-title">Documents Control</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuPagesProjectsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link @yield('documents')" href="{{ route('it.documents') }}">Overview</a>
-                                    {{--  <a class="nav-link" href="projects-timeline.html">Timeline</a>  --}}
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#navbarVerticalMenuPagesEcommerceMenu"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuPagesEcommerceMenu"
-                                    aria-expanded="false"
-                                    aria-controls="navbarVerticalMenuPagesEcommerceMenu"
-                                >
-                                    <i class="bi-basket nav-icon"></i>
-                                    <span class="nav-link-title">E-commerce</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuPagesEcommerceMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link" href="ecommerce.html">Overview</a>
-
-                                    <div id="navbarVerticalMenuPagesMenuEcommerce">
-                                        <!-- Collapse -->
-                                        <div class="nav-item">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#navbarVerticalMenuPagesEcommerceProductsMenu"
-                                                role="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#navbarVerticalMenuPagesEcommerceProductsMenu"
-                                                aria-expanded="false"
-                                                aria-controls="navbarVerticalMenuPagesEcommerceProductsMenu"
-                                            >
-                                                Products
-                                            </a>
-
-                                            <div id="navbarVerticalMenuPagesEcommerceProductsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                                <a class="nav-link" href="ecommerce-products.html">Products</a>
-                                                <a class="nav-link" href="ecommerce-product-details.html">Product Details</a>
-                                                <a class="nav-link" href="ecommerce-add-product.html">Add Product</a>
-                                            </div>
-                                        </div>
-                                        <!-- End Collapse -->
-
-                                        <!-- Collapse -->
-                                        <div class="nav-item">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#navbarVerticalMenuPagesEcommerceOrdersMenu"
-                                                role="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#navbarVerticalMenuPagesEcommerceOrdersMenu"
-                                                aria-expanded="false"
-                                                aria-controls="navbarVerticalMenuPagesEcommerceOrdersMenu"
-                                            >
-                                                Orders
-                                            </a>
-
-                                            <div id="navbarVerticalMenuPagesEcommerceOrdersMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                                <a class="nav-link" href="ecommerce-orders.html">Orders</a>
-                                                <a class="nav-link" href="ecommerce-order-details.html">Order Details</a>
-                                            </div>
-                                        </div>
-                                        <!-- End Collapse -->
-
-                                        <!-- Collapse -->
-                                        <div class="nav-item">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#navbarVerticalMenuPagesEcommerceCustomersMenu"
-                                                role="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#navbarVerticalMenuPagesEcommerceCustomersMenu"
-                                                aria-expanded="false"
-                                                aria-controls="navbarVerticalMenuPagesEcommerceCustomersMenu"
-                                            >
-                                                Customers
-                                            </a>
-
-                                            <div id="navbarVerticalMenuPagesEcommerceCustomersMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                                <a class="nav-link" href="ecommerce-customers.html">Customers</a>
-                                                <a class="nav-link" href="ecommerce-customer-details.html">Customer Details</a>
-                                                <a class="nav-link" href="ecommerce-add-customers.html">Add Customers</a>
-                                            </div>
-                                        </div>
-                                        <!-- End Collapse -->
-                                    </div>
-
-                                    <a class="nav-link" href="ecommerce-referrals.html">Referrals</a>
-                                    <a class="nav-link" href="ecommerce-manage-reviews.html">Manage Reviews</a>
+                                    <a class="nav-link @yield('drivers')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
+                                    <a class="nav-link @yield('addDriver')" href="{{ route('addDriver') }}">Add Driver </a>
                                 </div>
                             </div>
                             <!-- End Collapse -->
@@ -482,188 +316,10 @@
                                 </a>
                             </div>
 
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
-                                    class="nav-link dropdown-toggle collapsed"
-                                    href="#"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuAuthentication"
-                                    aria-expanded="false"
-                                    aria-controls="navbarVerticalMenuAuthentication"
-                                >
-                                    <i class="bi-receipt nav-icon"></i>
-                                    <span class="nav-link-title">Finance</span> <span class="badge bg-info rounded-pill ms-1">BETA</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuAuthentication" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
-                                    <div id="navbarVerticalMenuAuthenticationMenu">
-                                        <a class="nav-link" href="javascript:;">Overview</a>
-                                        <a class="nav-link" href="javascript:;">Requisition</a>
-                                        <a class="nav-link" href="javascript:;">Retirements</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#navbarVerticalMenuPagesAccountMenu"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuPagesAccountMenu"
-                                    aria-expanded="false"
-                                    aria-controls="navbarVerticalMenuPagesAccountMenu"
-                                >
-                                    <i class="bi-person-badge nav-icon"></i>
-                                    <span class="nav-link-title">My Leave</span><span class="badge bg-info rounded-pill ms-1">BETA</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuPagesAccountMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link" href="javascript:;">Overview</a>
-                                    <a class="nav-link" href="javascript:;">Apply for Leave</a>
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <a class="nav-link @yield('profile')" href="{{ route('it.profile', auth()->user()) }}">
+                            <a class="nav-link @yield('profile')" href="#!">
                                 <i class="bi-person nav-icon"></i>
                                 <span class="nav-link-title">My Profile</span>
                             </a>
-
-                                {{--
-
-
-
-
-
-                                        <!-- Collapse -->
-                                        <div class="nav-item">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#navbarVerticalMenuPagesProjectsMenu"
-                                                role="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#navbarVerticalMenuPagesProjectsMenu"
-                                                aria-expanded="false"
-                                                aria-controls="navbarVerticalMenuPagesProjectsMenu"
-                                            >
-                                                <i class="bi-stickies nav-icon"></i>
-                                                <span class="nav-link-title">Projects</span>
-                                            </a>
-
-                                            <div id="navbarVerticalMenuPagesProjectsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                                <a class="nav-link" href="projects.html">Overview</a>
-                                                <a class="nav-link" href="projects-timeline.html">Timeline</a>
-                                            </div>
-                                        </div>
-                                        <!-- End Collapse -->
-
-                                        <!-- Collapse -->
-                                        <div class="nav-item">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#navbarVerticalMenuPagesProjectMenu"
-                                                role="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#navbarVerticalMenuPagesProjectMenu"
-                                                aria-expanded="false"
-                                                aria-controls="navbarVerticalMenuPagesProjectMenu"
-                                            >
-                                                <i class="bi-briefcase nav-icon"></i>
-                                                <span class="nav-link-title">Project</span>
-                                            </a>
-
-                                            <div id="navbarVerticalMenuPagesProjectMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                                <a class="nav-link" href="project.html">Overview</a>
-                                                <a class="nav-link" href="project-files.html">Files</a>
-                                                <a class="nav-link" href="project-activity.html">Activity</a>
-                                                <a class="nav-link" href="project-teams.html">Teams</a>
-                                                <a class="nav-link" href="project-settings.html">Settings</a>
-                                            </div>
-                                        </div>
-                                        <!-- End Collapse -->
-
-
-
-                                        <div class="nav-item">
-                                            <a class="nav-link" href="api-keys.html" data-placement="left">
-                                                <i class="bi-key nav-icon"></i>
-                                                <span class="nav-link-title">API Keys</span>
-                                            </a>
-                                        </div>
-
-                                        <div class="nav-item">
-                                            <a class="nav-link" href="welcome-page.html" data-placement="left">
-                                                <i class="bi-eye nav-icon"></i>
-                                                <span class="nav-link-title">Welcome Page</span>
-                                            </a>
-                                        </div>
-
-                                        <div class="nav-item">
-                                            <a class="nav-link" href="landing.html" data-placement="left">
-                                                <i class="bi-box-seam nav-icon"></i>
-                                                <span class="nav-link-title">Landing Page <span class="badge bg-info rounded-pill ms-1">New</span></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- End Collapse -->
-
-                                    <span class="mt-4 dropdown-header">Apps</span>
-                                    <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="apps-kanban.html" data-placement="left">
-                                            <i class="bi-kanban nav-icon"></i>
-                                            <span class="nav-link-title">Kanban</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="apps-calendar.html" data-placement="left">
-                                            <i class="bi-calendar-week nav-icon"></i>
-                                            <span class="nav-link-title">Calendar</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="apps-invoice-generator.html" data-placement="left">
-                                            <i class="bi-receipt nav-icon"></i>
-                                            <span class="nav-link-title">Invoice Generator</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="apps-file-manager.html" data-placement="left">
-                                            <i class="bi-folder2-open nav-icon"></i>
-                                            <span class="nav-link-title">File Manager</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="mt-4 dropdown-header">Layouts</span>
-                                    <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="layouts/index.html" data-placement="left">
-                                            <i class="bi-grid-1x2 nav-icon"></i>
-                                            <span class="nav-link-title">Layouts</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="mt-4 dropdown-header">Documentation</span>
-                                    <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="documentation/index.html" data-placement="left">
-                                            <i class="bi-book nav-icon"></i>
-                                            <span class="nav-link-title">Documentation <span class="badge bg-primary rounded-pill ms-1">v2.0</span></span>
-                                        </a>
-                                    </div>
-
-                                --}}
 
                         <div class="nav-item">
                             <form method="POST" action="{{ route('logout') }}">
