@@ -9,7 +9,7 @@
                         <a class="step-content-wrapper" href="#!">
                             <span class="step-icon step-icon-soft-dark">1</span>
                             <div class="step-content">
-                                <span class="step-title">Basic {{ $staff_type }}</span>
+                                <span class="step-title">Basic</span>
                             </div>
                         </a>
                     </li>
@@ -70,7 +70,7 @@
                                             @if ($avatar)
                                             <img wire:loading.class.delay='opacity-75' id="avatarImg" class="avatar-img" src="{{ $avatar->temporaryUrl() }}" alt="avatar">
                                             @else
-                                            <img id="avatarImg" class="avatar-img" src="{{ asset('backend-assets/img/160x160/img1.jpg') }}" alt="avatar">
+                                            <img id="avatarImg" class="avatar-img" src="{{ asset('admin-assets/img/160x160/img1.jpg') }}" alt="avatar">
                                             @endif
                                             <input wire:model='avatar' type="file" name="avatar" accept="image/png, image/jpeg" class="js-file-attach avatar-uploader-input" id="avatarUploader" >
 
@@ -112,7 +112,7 @@
                                 </label>
 
                                 <div class="col-sm-9">
-                                    <input wire:model.defer='email' type="email" class="form-control" name="email" id="emailLabel" placeholder="staff@nueoffshore.com" aria-label="staff@nueoffshore.com">
+                                    <input wire:model.defer='email' type="email" class="form-control" name="email" id="emailLabel" placeholder="staff@rotas.com" aria-label="staff@rotas.com">
                                     @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -171,130 +171,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Form -->
-
-                            <!-- Staff type Form -->
-                            <div class="mb-4 row">
-                                <label class="col-sm-3 col-form-label form-label">Staff type</label>
-
-                                <div class="col-sm-9">
-                                    <div class="input-group input-group-sm-vertical">
-                                        <!-- Radio Check -->
-                                        <label class="form-control" for="userAccountTypeRadio1">
-                                            <span class="form-check">
-                                                <input wire:model='staff_type' value="crew_member" type="radio" class="form-check-input" name="userAccountTypeRadio" id="userAccountTypeRadio1">
-                                                <span class="form-check-label">Crew member</span>
-                                            </span>
-                                        </label>
-                                        <!-- End Radio Check -->
-
-                                        <!-- Radio Check -->
-                                        <label class="form-control" for="userAccountTypeRadio2">
-                                            <span class="form-check">
-                                                <input wire:model='staff_type' value="office_staff" type="radio" class="form-check-input" name="userAccountTypeRadio" id="userAccountTypeRadio2">
-                                                <span class="form-check-label">Office staff</span>
-                                            </span>
-                                        </label>
-                                        <!-- End Radio Check -->
-                                    </div>
-                                </div>
-                                @error('staff_type') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-
-                            {{--  <!-- Form -->
-                            <div class="mb-4 row">
-                                <label for="departmentLabel" class="col-sm-3 col-form-label form-label">Department</label>
-
-                                <div class="col-sm-9">
-                                    <!-- Select -->
-                                    <div class="mb-2 tom-select-custom">
-                                        <select wire:model.defer='department_id' class="js-select form-select" id="departmentLabel">
-                                            <option value="0">Crew Member</option>
-                                            @foreach ($departments as $department)
-                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('department_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Form -->  --}}
-
-                            <!-- Department Form -->
-                            <div class="mb-4 row" style="{{ $staff_type == 'crew_member' ? 'display: none;' : '' }}">
-                                <label for="departmentLabel" class="col-sm-3 col-form-label form-label">Department</label>
-
-                                <div class="col-sm-9">
-                                    <!-- Select -->
-                                    <div class="mb-2 tom-select-custom">
-                                        <select wire:model.defer='department_id' class="js-select form-select" id="departmentLabel">
-                                            <option value="">--- Select employee Department ---</option>
-                                            @foreach ($departments as $department)
-                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('department_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Form -->
-
-                            <!-- Grade Form -->
-                            <div class="mb-4 row" style="{{ $staff_type == 'crew_member' ? 'display: none;' : '' }}">
-                                <label for="gradeLabel" class="col-sm-3 col-form-label form-label">Grade</label>
-
-                                <div class="col-sm-9">
-                                    <!-- Select -->
-                                    <div class="mb-2 tom-select-custom">
-                                        <select wire:model.defer='grade_id' class="js-select form-select" id="gradeLabel">
-                                            <option value="">--- Select employee Grade ---</option>
-                                            @foreach ($grades as $grade)
-                                            <option value="{{ $grade->id }}">{{ $grade->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('grade_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Form -->
-
-                            <!-- Vessel Form -->
-                            <div class="mb-4 row" style="{{ $staff_type == 'office_staff' ? 'display: none;' : '' }}">
-                                <label for="vesselLabel" class="col-sm-3 col-form-label form-label">Vessel</label>
-
-                                <div class="col-sm-9">
-                                    <!-- Select -->
-                                    <div class="mb-2 tom-select-custom">
-                                        <select wire:model.defer='vessel_id' class="js-select form-select" id="vesselLabel">
-                                            <option value="">--- Select a Vessel ---</option>
-                                            @foreach ($vessels as $vessel)
-                                            <option value="{{ $vessel->id }}">{{ $vessel->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('vessel_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Form -->
-
-                            <!-- Position Form -->
-                            <div class="mb-4 row" style="{{ $staff_type == 'office_staff' ? 'display: none;' : '' }}">
-                                <label for="positionLabel" class="col-sm-3 col-form-label form-label">Position</label>
-
-                                <div class="col-sm-9">
-                                    <!-- Select -->
-                                    <div class="mb-2 tom-select-custom">
-                                        <select wire:model.defer='position_id' class="js-select form-select" id="positionLabel">
-                                            <option value="">--- Select crew Position ---</option>
-                                            @foreach ($positions as $position)
-                                            <option value="{{ $position->id }}">{{ $position->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('position_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Form -->
 
                             <!-- Gender Form -->
                             <div class="mb-4 row">
@@ -303,19 +179,19 @@
                                 <div class="col-sm-9">
                                     <div class="input-group input-group-sm-vertical">
                                         <!-- Radio Check -->
-                                        <label class="form-control" for="userAccountTypeRadio1">
+                                        <label class="form-control" for="maleRadio">
                                             <span class="form-check">
-                                                <input wire:model='staff_type' value="crew_member" type="radio" class="form-check-input" name="userAccountTypeRadio" id="userAccountTypeRadio1">
-                                                <span class="form-check-label">Crew member</span>
+                                                <input wire:model='gender' value="Male" type="radio" class="form-check-input" name="userAccountTypeRadio" id="maleRadio">
+                                                <span class="form-check-label">Male</span>
                                             </span>
                                         </label>
                                         <!-- End Radio Check -->
 
                                         <!-- Radio Check -->
-                                        <label class="form-control" for="userAccountTypeRadio2">
+                                        <label class="form-control" for="femaleRadio">
                                             <span class="form-check">
-                                                <input wire:model='staff_type' value="office_staff" type="radio" class="form-check-input" name="userAccountTypeRadio" id="userAccountTypeRadio2">
-                                                <span class="form-check-label">Office staff</span>
+                                                <input wire:model='gender' value="Female" type="radio" class="form-check-input" name="userAccountTypeRadio" id="femaleRadio">
+                                                <span class="form-check-label">Female</span>
                                             </span>
                                         </label>
                                         <!-- End Radio Check -->
@@ -324,16 +200,6 @@
                                 @error('gender') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <!-- End Form -->
-
-                            <label class="row form-check form-switch mb-4 mt-4" style="{{ $staff_type == 'crew_member' ? 'display: none;' : '' }}" for="accounrSettingsPreferencesSwitch1">
-                                <span class="col-8 col-sm-9 ms-0">
-                                    <span class="d-block text-dark">Make HOD?</span>
-                                    <span class="d-block fs-5">Grant access to core departmental functions by making this user HOD</span>
-                                </span>
-                                <span class="col-4 col-sm-3 text-end">
-                                    <input wire:model.defer='hod' type="checkbox" class="form-check-input" id="accounrSettingsPreferencesSwitch1">
-                                </span>
-                            </label>
 
                         </div>
                         <!-- End Body -->
@@ -868,7 +734,7 @@
                         <!-- Profile Cover -->
                         <div class="profile-cover">
                                 <div class="profile-cover-img-wrapper">
-                                    <img class="profile-cover-img" src="{{ asset('backend-assets/img/1920x400/img1.jpg') }}" alt="Image Description">
+                                    <img class="profile-cover-img" src="{{ asset('admin-assets/img/1920x400/img1.jpg') }}" alt="Image Description">
                                 </div>
                         </div>
                         <!-- End Profile Cover -->
@@ -878,7 +744,7 @@
                         @if($avatar)
                         <img class="avatar-img" src="{{ $avatar->temporaryUrl() }}" alt="avatar">
                         @else
-                        <img class="avatar-img" src="{{ asset('backend-assets/img/160x160/img1.jpg') }}" alt="avatar">
+                        <img class="avatar-img" src="{{ asset('admin-assets/img/160x160/img1.jpg') }}" alt="avatar">
                         @endif
                     </div>
                       <!-- End Avatar -->
@@ -930,8 +796,8 @@
                 <!-- Message Body -->
                 <div id="step=6" style="{{ $currentStep != 6 ? 'display: none;' : '' }}">
                     <div class="text-center">
-                        <img class="mb-3 img-fluid" src="{{ asset('backend-assets/svg/illustrations/oc-hi-five.svg') }}" alt="Image Description" data-hs-theme-appearance="default" style="max-width: 15rem;">
-                        <img class="mb-3 img-fluid" src="{{ asset('backend-assets/svg/illustrations-light/oc-hi-five.svg') }}" alt="Image Description" data-hs-theme-appearance="dark" style="max-width: 15rem;">
+                        <img class="mb-3 img-fluid" src="{{ asset('admin-assets/svg/illustrations/oc-hi-five.svg') }}" alt="Image Description" data-hs-theme-appearance="default" style="max-width: 15rem;">
+                        <img class="mb-3 img-fluid" src="{{ asset('admin-assets/svg/illustrations-light/oc-hi-five.svg') }}" alt="Image Description" data-hs-theme-appearance="dark" style="max-width: 15rem;">
 
                         <div class="mb-4">
                         <h2>Successful!</h2>
@@ -939,8 +805,8 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <a class="btn btn-white me-3" href="{{ route('it.users') }}">
-                                <i class="bi-chevron-left ms-1"></i> Back to users
+                            <a class="btn btn-white me-3" href="{{ route('drivers') }}">
+                                <i class="bi-chevron-left ms-1"></i> Back to drivers
                             </a>
                             <a wire:click="back(1)" class="btn btn-primary">
                                 <i class="bi-person-plus-fill me-1"></i> Add another staff
@@ -967,7 +833,7 @@
             <div class="toast-header">
                 <div class="d-flex align-items-center flex-grow-1">
                 <div class="flex-shrink-0">
-                    <img class="avatar avatar-sm avatar-circle" src="{{ asset('backend-assets/img/others/success-icon.png') }}" alt="Image description">
+                    <img class="avatar avatar-sm avatar-circle" src="{{ asset('admin-assets/img/others/success-icon.png') }}" alt="Image description">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h5 class="mb-0">User account created!</h5>
