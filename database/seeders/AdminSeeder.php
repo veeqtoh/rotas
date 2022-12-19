@@ -20,6 +20,7 @@ class AdminSeeder extends Seeder
         $admin = User::create([
             'employee_id' => fake()->randomNumber($nbDigits = NULL, $strict = false),
             'email' => 'superadmin@rotas.com',
+            'username' => 'superadmin',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'role' => 'admin',

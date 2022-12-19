@@ -20,7 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['employee_id', 'role', 'email', 'password', 'last_login'];
+    protected $fillable = ['employee_id', 'role', 'email', 'username', 'password', 'last_login'];
 
     public static function booted()
     {
