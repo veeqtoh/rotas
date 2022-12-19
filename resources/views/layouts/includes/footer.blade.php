@@ -6,7 +6,7 @@
                     <p class="mb-0 fs-6">&copy;
                         <span class="d-none d-sm-inline-block" id="date">
                             <script>document.getElementById('date').innerHTML = new Date().getFullYear()</script>
-                        </span>. N.U.E Offshore Resources Limited.
+                        </span>. Rotas.
                     </p>
                 </div>
                 <!-- End Col -->

@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Van;
 use App\Models\User;
 use App\Models\Driver;
 use Livewire\Component;
@@ -21,10 +20,6 @@ class DriverWizard extends Component
     // Driver data
     public $email;
     public $avatar;
-    public $department_id = 0;
-    public $grade_id = 0;
-    public $vessel_id = 0;
-    public $position_id = 0;
     public $first_name;
     public $last_name;
     public $other_name;
@@ -38,7 +33,6 @@ class DriverWizard extends Component
     public $address_line_1;
     public $address_line_2;
     public $marital_status;
-    public $hod = 0;
 
     // Next of Kins
     public $title, $full_name, $relationship, $phone_number_1, $phone_number_2, $email_address, $residential_address;
@@ -54,7 +48,6 @@ class DriverWizard extends Component
         'email.required' => 'A valid email is required',
         'avatar.image' => 'File must be an image',
         'avatar.max' => 'File must not be larger than 5mb',
-        'department_id.required' => 'Department is required',
         'first_name.required' => 'First name is required',
         'last_name.required' => 'Last name is required',
         'gender.required' => 'Select a gender',
@@ -89,10 +82,6 @@ class DriverWizard extends Component
             'gender' => 'required',
             'phone_1' => 'required',
             'phone_2' => 'sometimes',
-            'department_id' => 'sometimes',
-            'grade_id' => 'sometimes',
-            'vessel_id' => 'sometimes',
-            'position_id' => 'sometimes',
         ]);
 
         $this->currentStep = 2;
@@ -147,7 +136,7 @@ class DriverWizard extends Component
             'email' => strtolower(trim($this->email)),
             'password' => Hash::make('Pass2022'),
             'email_verified_at' => now(),
-            'user_type' => 1,
+            'role' => 'driver',
         ]);
 
         $this->avatar && $user->update([
@@ -169,12 +158,6 @@ class DriverWizard extends Component
             'address_line_1' => $this->address_line_1,
             'address_line_2' => $this->address_line_2,
             'marital_status' => $this->marital_status,
-            'hod' => $this->hod,
-            'department_id'=> $this->department_id,
-            'grade_id'=> $this->grade_id,
-            'vessel_id'=> $this->vessel_id,
-            'position_id'=> $this->position_id,
-
         ]);
 
         foreach ($this->full_name as $key => $value) {
