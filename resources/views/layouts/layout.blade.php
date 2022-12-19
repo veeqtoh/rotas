@@ -3676,7 +3676,16 @@
 
             // INITIALIZATION OF SELECT
             // =======================================================
-            HSCore.components.HSTomSelect.init('.js-select')
+            HSCore.components.HSTomSelect.init('.js-select', {
+                render: {
+                'option': function (data, escape) {
+                    return data.optionTemplate || `<div>${data.text}</div>>`
+                },
+                'item': function (data, escape) {
+                    return data.optionTemplate || `<div>${data.text}</div>>`
+                }
+                }
+            })
 
 
             // INITIALIZATION OF CLIPBOARD
