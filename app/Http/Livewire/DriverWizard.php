@@ -3,13 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
-use App\Models\Grade;
 use App\Models\Staff;
-use App\Models\Vessel;
+use App\Models\Van;
 use Livewire\Component;
-use App\Models\Position;
 use App\Models\NextOfKin;
-use App\Models\Department;
 use App\Models\Certification;
 use Livewire\WithFileUploads;
 use App\Events\StaffCreatedEvent;
@@ -21,7 +18,7 @@ class DriverWizard extends Component
 
     public $currentStep = 1;
 
-    // Staff data
+    // Driver data
     public $email;
     public $avatar;
     public $department_id = 0;
