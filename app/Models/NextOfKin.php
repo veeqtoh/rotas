@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class NextOfKin extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function driver(): BelongsTo
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }
