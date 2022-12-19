@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Certification;
 use App\Models\User;
-use App\Models\certifications;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CertificationsPolicy
+class CertificationPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class CertificationsPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, certifications $certifications)
+    public function view(User $user, Certification $certification)
     {
         //
     }
@@ -48,10 +48,10 @@ class CertificationsPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, certifications $certifications)
+    public function update(User $user, Certification $certification)
     {
         //
     }
@@ -60,10 +60,10 @@ class CertificationsPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, certifications $certifications)
+    public function delete(User $user, Certification $certification)
     {
         //
     }
@@ -72,10 +72,10 @@ class CertificationsPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, certifications $certifications)
+    public function restore(User $user, Certification $certification)
     {
         //
     }
@@ -84,10 +84,10 @@ class CertificationsPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, certifications $certifications)
+    public function forceDelete(User $user, Certification $certification)
     {
         //
     }

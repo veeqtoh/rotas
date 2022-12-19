@@ -2,14 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
-use App\Models\Staff;
 use App\Models\Van;
+use App\Models\User;
+use App\Models\Driver;
 use Livewire\Component;
 use App\Models\NextOfKin;
 use App\Models\Certification;
 use Livewire\WithFileUploads;
-use App\Events\StaffCreatedEvent;
+use App\Events\DriverCreatedEvent;
 use Illuminate\Support\Facades\Hash;
 
 class DriverWizard extends Component
@@ -38,7 +38,6 @@ class DriverWizard extends Component
     public $address_line_1;
     public $address_line_2;
     public $marital_status;
-    public $staff_type = 'office_staff';
     public $hod = 0;
 
     // Next of Kins
@@ -65,7 +64,6 @@ class DriverWizard extends Component
         'employment_date.required' => 'Employment date is required',
         'residential_address.required' => 'Address is required',
         'marital_status.required' => 'Marital status is required',
-        'staff_type.required' => 'Staff type is required',
         'address_line_1.required' => 'Residential address is required',
         'full_name.0.required' => 'Full name is required',
         'phone_number_1.0.required' => 'Phone is required',
@@ -81,7 +79,7 @@ class DriverWizard extends Component
     public function firstStepSubmit()
     {
         // dd($this->email, $this->avatar, $this->department_id, $this->first_name, $this->last_name, $this->other_name, $this->gender, $this->phone_1, $this->phone_2, $this->staff_type, $this->grade_id);
-        // Validate staff data
+        // Validate driver data
         $this->validate([
             'email' => 'required|string|email',
             'avatar' => 'nullable|image|max:5000',
@@ -91,7 +89,6 @@ class DriverWizard extends Component
             'gender' => 'required',
             'phone_1' => 'required',
             'phone_2' => 'sometimes',
-            'staff_type' => 'required',
             'department_id' => 'sometimes',
             'grade_id' => 'sometimes',
             'vessel_id' => 'sometimes',
@@ -103,7 +100,7 @@ class DriverWizard extends Component
 
     public function secondStepSubmit()
     {
-        // Validate more staff details
+        // Validate more driver details
         $this->validate([
             'personal_email' => 'sometimes',
             'date_of_birth' => 'sometimes',
@@ -157,9 +154,8 @@ class DriverWizard extends Component
             'avatar' => $this->avatar->store('/'.$user->username, 'avatars'),
         ]);
 
-        $staff = Staff::create([
+        $driver = Driver::create([
             'user_id' => $user->id,
-            'staff_type' => $this->staff_type,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'other_name' => $this->other_name,
@@ -183,7 +179,7 @@ class DriverWizard extends Component
 
         foreach ($this->full_name as $key => $value) {
             NextOfKin::create([
-                'staff_id' => $staff->id,
+                'driver_id' => $driver->id,
                 'title' => !empty($this->title[$key]) ? $this->title[$key] : '',
                 'residential_address' => !empty($this->residential_address[$key]) ? $this->residential_address[$key] : '',
                 'phone_number_1' => !empty($this->phone_number_1[$key]) ? $this->phone_number_1[$key] : '',
@@ -196,7 +192,7 @@ class DriverWizard extends Component
 
         foreach ($this->certificate_title as $key => $value) {
             Certification::create([
-                'staff_id' => $staff->id,
+                'driver_id' => $driver->id,
                 'certificate_title' => $this->certificate_title[$key],
                 'mime' => $this->src[$key]->getClientOriginalExtension(),
                 'src' => $this->src[$key]->store('/'.$user->username, 'certificates'),
@@ -206,7 +202,7 @@ class DriverWizard extends Component
             ]);
         }
 
-        event(new StaffCreatedEvent($user));
+        event(new DriverCreatedEvent($user));
 
         $this->reset();
         $this->src = '';

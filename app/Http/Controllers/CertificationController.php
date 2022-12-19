@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Certifications;
-use App\Http\Requests\StoreCertificationsRequest;
-use App\Http\Requests\UpdateCertificationsRequest;
+use App\Models\Certification;
+use App\Http\Requests\StoreCertificationRequest;
+use App\Http\Requests\UpdateCertificationRequest;
 
-class CertificationsController extends Controller
+class CertificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class CertificationsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCertificationsRequest  $request
+     * @param  \App\Http\Requests\StoreCertificationRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCertificationsRequest $request)
+    public function store(StoreCertificationRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class CertificationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function show(Certifications $certifications)
+    public function show(Certification $certification)
     {
         //
     }
@@ -53,10 +53,10 @@ class CertificationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function edit(Certifications $certifications)
+    public function edit(Certification $certification)
     {
         //
     }
@@ -64,11 +64,11 @@ class CertificationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCertificationsRequest  $request
-     * @param  \App\Models\Certifications  $certifications
+     * @param  \App\Http\Requests\UpdateCertificationRequest  $request
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCertificationsRequest $request, Certifications $certifications)
+    public function update(UpdateCertificationRequest $request, Certification $certification)
     {
         //
     }
@@ -76,10 +76,10 @@ class CertificationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Certifications  $certifications
+     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Certifications $certifications)
+    public function destroy(Certification $certification)
     {
         //
     }
