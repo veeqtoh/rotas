@@ -56,6 +56,20 @@ return [
             'throw' => false,
         ],
 
+        'avatars' => [
+            'driver' => 'local',
+            'root' => storage_path('app/avatars'),
+            'url' => env('APP_URL').'/avatars',
+            'visibility' => 'public',
+        ],
+
+        'certificates' => [
+            'driver' => 'local',
+            'root' => storage_path('app/certificates'),
+            'url' => env('APP_URL').'/certificates',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*
@@ -71,6 +85,8 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('avatars') => storage_path('app/avatars'),
+        public_path('certificates') => storage_path('app/certificates'),
     ],
 
 ];
