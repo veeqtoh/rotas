@@ -29,4 +29,14 @@ class Driver extends Model
         return $this->hasMany(Shift::class);
     }
 
+    public function certifications(): HasMany
+    {
+        return $this->hasMany(Certification::class);
+    }
+
+    public function nextOfKins(): HasMany
+    {
+        return $this->hasMany(NextOfKin::class);
+    }
+
 }
