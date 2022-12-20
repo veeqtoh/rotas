@@ -28,4 +28,5 @@ class Driver extends Model
     {
         return $this->hasMany(Shift::class);
     }
+
 }
