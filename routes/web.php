@@ -30,12 +30,13 @@ Route::group(['middleware' => ['auth', 'admin'],], function(){
         Route::get('admins', 'admins')->name('admins');
         Route::get('add-driver', 'addDriver')->name('addDriver');
         Route::get('add-admin', 'addAdmin')->name('addAdmin');
+        Route::get('profile/{user:uuid}', 'profile')->name('profile');
     });
-    Route::controller(ProfileController::class)->group(function () {
-        Route::get('/profile', 'edit')->name('profile.edit');
-        Route::patch('/profile', 'update')->name('profile.update');
-        Route::delete('/profile', 'destroy')->name('profile.destroy');
-    });
+    // Route::controller(ProfileController::class)->group(function () {
+    //     Route::get('/profile', 'edit')->name('profile.edit');
+    //     Route::patch('/profile', 'update')->name('profile.update');
+    //     Route::delete('/profile', 'destroy')->name('profile.destroy');
+    // });
 });
 
 require __DIR__.'/auth.php';

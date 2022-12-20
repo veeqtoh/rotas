@@ -66,6 +66,17 @@ class User extends Authenticatable
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 
+    public function bannerUrl()
+    {
+        return env('APP_URL').'/admin-assets/img/1920x400/img2.jpg';
+        /**
+        return $this->banner
+            ? Storage::disk('banners')->url($this->banner)
+            : env('APP_URL').'/backend-assets/img/1920x400/img2.jpg';
+
+         */
+    }
+
     public function isActive(): bool
     {
         if($this->email_verified_at){

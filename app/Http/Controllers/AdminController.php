@@ -32,4 +32,14 @@ class AdminController extends Controller
             'driversCount' => $allDrivers->count(),
         ]);
     }
+
+    public function profile($user)
+    {
+        $userDetails = $this->userService->getUserDetails($user);
+        // $colleagues = $this->userService->getUserColleagues($user);
+        return view('profile', [
+            'user' => $userDetails,
+            // 'colleagues' => $colleagues,
+        ]);
+    }
 }

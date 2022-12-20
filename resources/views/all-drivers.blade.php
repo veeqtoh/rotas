@@ -313,7 +313,7 @@
                                     </div>
                                 </td>
                                 <td class="table-column-ps-0">
-                                    <a class="d-flex align-items-center" href="{{ route('profile.edit', $driver) }}">
+                                    <a class="d-flex align-items-center" href="{{ route('profile', $driver->user) }}">
                                         <div class="avatar avatar-circle">
                                             <img class="avatar-img" src="{{ $driver->user->avatarUrl() }}" alt="avatar">
                                         </div>
@@ -343,7 +343,7 @@
                                 </td>
                                 <td>Driver</td>
                                 <td>
-                                    <a href="{{ route('profile.edit', $driver) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
+                                    <a href="{{ route('profile', $driver->user) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
                                 </td>
                             </tr>
                             @empty
