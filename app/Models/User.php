@@ -49,12 +49,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function driverProfile(): HasOne
+    public function driver(): HasOne
     {
         return $this->hasOne(Driver::class);
     }
 
-    public function adminProfile(): HasOne
+    public function admin(): HasOne
     {
         return $this->hasOne(Admin::class);
     }

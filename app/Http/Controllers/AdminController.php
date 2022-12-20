@@ -4,12 +4,13 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Services\DriverService;
+use App\Services\UserService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function __construct(private DriverService $driverService)
+    public function __construct(private UserService $userService, private DriverService $driverService)
     {
         #code
     }
