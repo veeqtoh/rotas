@@ -42,4 +42,14 @@ class AdminController extends Controller
             // 'colleagues' => $colleagues,
         ]);
     }
+
+    public function settings($user)
+    {
+        $userDetails = $this->userService->getUserDetails($user);
+        // $colleagues = $this->userService->getUserColleagues($user);
+        return view('settings', [
+            'user' => $userDetails,
+            // 'colleagues' => $colleagues,
+        ]);
+    }
 }

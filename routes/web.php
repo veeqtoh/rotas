@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'admin'],], function(){
         Route::get('add-driver', 'addDriver')->name('addDriver');
         Route::get('add-admin', 'addAdmin')->name('addAdmin');
         Route::get('profile/{user:uuid}', 'profile')->name('profile');
+        Route::get('settings/{user:uuid}', 'settings')->name('settings');
     });
     // Route::controller(ProfileController::class)->group(function () {
     //     Route::get('/profile', 'edit')->name('profile.edit');
