@@ -24,7 +24,6 @@ class DriverFactory extends Factory
             'last_name' => fake()->lastName(),
             'gender' => $genders[array_rand($genders)],
             'phone_1' => fake()->phoneNumber(),
-            'avatar' => fake()->imageUrl($width = 640, $height = 480),
         ];
     }
 }

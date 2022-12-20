@@ -799,7 +799,7 @@
 
                         <div class="mb-4">
                         <h2>Successful!</h2>
-                            <p>New <span class="fw-semi-bold text-dark">Staff</span> account has been successfully created.</p>
+                            <p>New <span class="fw-semi-bold text-dark">Driver</span> account has been successfully created.</p>
                         </div>
 
                         <div class="d-flex justify-content-center">
@@ -807,7 +807,7 @@
                                 <i class="bi-chevron-left ms-1"></i> Back to drivers
                             </a>
                             <a wire:click="back(1)" class="btn btn-primary">
-                                <i class="bi-person-plus-fill me-1"></i> Add another staff
+                                <i class="bi-person-plus-fill me-1"></i> Add another driver
                             </a>
                         </div>
                     </div>
