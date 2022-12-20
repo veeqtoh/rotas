@@ -318,36 +318,36 @@
                                             <img class="avatar-img" src="{{ $user->user->avatarUrl() }}" alt="avatar">
                                         </div>
                                         <div class="ms-3">
-                                            <span class="mb-0 d-block h5 text-inherit">{{ ($user->staff) ? $user->staff->first_name.' '.$user->staff->last_name : $user->customer->first_name.' '.$user->customer->last_name }}
-                                                <i class="{{ ($user->isActive()) ? 'bi-patch-check-fill text-primary' : ''}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
+                                            <span class="mb-0 d-block h5 text-inherit">{{ $user->first_name.' '.$user->last_name }}
+                                                <i class="{{ ($user->user->isActive()) ? 'bi-patch-check-fill text-primary' : ''}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
                                             </span>
-                                            <span class="d-block fs-5 text-body">{{ $user->email }}</span>
+                                            <span class="d-block fs-5 text-body">{{ $user->user->email }}</span>
                                         </div>
                                     </a>
                                 </td>
                                 <td>
-                                    <span class="mb-0 d-block h5">{{ ($user->staff) ? 'Staff' : 'Customer' }}</span>
-                                    <span class="d-block fs-5">{{ ($user->staff) ? $user->staff->department->name : $user->orders->count().' completed orders'}}</span>
+                                    <span class="mb-0 d-block h5">Driver</span>
+                                    <span class="d-block fs-5">Completed deliveries</span>
                                 </td>
-                                <td>{{ ($user->staff) ? $user->staff->employment_date->diffForHumans() : 'Not Applicable' }}</td>
+                                <td>{{ $user->user->employment_date->diffForHumans() }}</td>
                                 <td>
-                                    <span class="legend-indicator {{  ($user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($user->isActive()) ? 'Active' : 'Inactive' }}
+                                    <span class="legend-indicator {{  ($user->user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($user->user->isActive()) ? 'Active' : 'Inactive' }}
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <span class="fs-5 me-2">{{ ($user->staff) ? '72%' : '100%' }}</span>
+                                        <span class="fs-5 me-2">{{ '100%' }}</span>
                                         <div class="progress table-progress">
-                                            <div class="progress-bar {{ ($user->staff) ? '' : 'bg-success' }}" role="progressbar" style="width: {{ ($user->staff) ? '72%' : '100%' }};" aria-valuenow="{{ ($user->staff) ? '72' : '100' }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar {{ 'bg-success' }}" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ ($user->staff) ? ucfirst($user->staff->staff_type) : 'Customer' }}</td>
+                                <td>Driver</td>
                                 <td>
                                     <a href="{{ route('profile.edit', $user) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
                                 </td>
                             </tr>
                             @empty
-                            {{--  <p>No employees data found</p>  --}}
+                            {{--  <p>No driver data found</p>  --}}
                             @endforelse
                         </tbody>
                     </table>
