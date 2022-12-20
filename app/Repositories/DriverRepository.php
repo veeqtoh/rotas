@@ -15,7 +15,7 @@ class DriverRepository
 
     public function getAll(): LengthAwarePaginator
     {
-        return $this->driver->paginate(config('app.paginate'));
+        return $this->driver->latest()->paginate(config('app.paginate'));
     }
 
 }

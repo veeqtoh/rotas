@@ -80,7 +80,7 @@
                                 <div class="input-group-prepend input-group-text">
                                     <i class="bi-search"></i>
                                 </div>
-                                <input id="datatableSearch" type="search" class="form-control" placeholder="Search employees" aria-label="Search employees" />
+                                <input id="datatableSearch" type="search" class="form-control" placeholder="Search drivers" aria-label="Search employees" />
                             </div>
                             <!-- End Search -->
                         </form>
@@ -304,7 +304,7 @@
                         </thead>
 
                         <tbody>
-                            @forelse($allDrivers as $user)
+                            @forelse($allDrivers as $driver)
                             <tr>
                                 <td class="table-column-pe-0">
                                     <div class="form-check">
@@ -313,25 +313,25 @@
                                     </div>
                                 </td>
                                 <td class="table-column-ps-0">
-                                    <a class="d-flex align-items-center" href="{{ route('profile.edit', $user) }}">
+                                    <a class="d-flex align-items-center" href="{{ route('profile.edit', $driver) }}">
                                         <div class="avatar avatar-circle">
-                                            <img class="avatar-img" src="{{ $user->user->avatarUrl() }}" alt="avatar">
+                                            <img class="avatar-img" src="{{ $driver->user->avatarUrl() }}" alt="avatar">
                                         </div>
                                         <div class="ms-3">
-                                            <span class="mb-0 d-block h5 text-inherit">{{ $user->first_name.' '.$user->last_name }}
-                                                <i class="{{ ($user->user->isActive()) ? 'bi-patch-check-fill text-primary' : ''}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
+                                            <span class="mb-0 d-block h5 text-inherit">{{ $driver->first_name.' '.$driver->last_name }}
+                                                <i class="{{ ($driver->user->isActive()) ? 'bi-patch-check-fill text-primary' : ''}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
                                             </span>
-                                            <span class="d-block fs-5 text-body">{{ $user->user->email }}</span>
+                                            <span class="d-block fs-5 text-body">{{ $driver->user->email }}</span>
                                         </div>
                                     </a>
                                 </td>
                                 <td>
                                     <span class="mb-0 d-block h5">Driver</span>
-                                    <span class="d-block fs-5">Completed deliveries</span>
+                                    <span class="d-block fs-5">10 Completed deliveries</span>
                                 </td>
-                                <td>{{ $user->user->employment_date->diffForHumans() }}</td>
+                                <td>{{ $driver->employment_date->diffForHumans() }}</td>
                                 <td>
-                                    <span class="legend-indicator {{  ($user->user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($user->user->isActive()) ? 'Active' : 'Inactive' }}
+                                    <span class="legend-indicator {{  ($driver->user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($driver->user->isActive()) ? 'Active' : 'Inactive' }}
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
@@ -343,7 +343,7 @@
                                 </td>
                                 <td>Driver</td>
                                 <td>
-                                    <a href="{{ route('profile.edit', $user) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
+                                    <a href="{{ route('profile.edit', $driver) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
                                 </td>
                             </tr>
                             @empty
