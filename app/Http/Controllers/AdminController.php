@@ -17,4 +17,13 @@ class AdminController extends Controller
     {
         return view('add-driver');
     }
+
+    public function drivers()
+    {
+        $allDrivers = $this->driverService->getAll();
+        return view('all-drivers', [
+            'allDrivers' => $allDrivers,
+            'driversCount' => $allDrivers->count(),
+        ]);
+    }
 }

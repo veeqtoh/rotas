@@ -9,4 +9,11 @@ class DriverService
     {
         #code
     }
+
+    public function getAll(): Collection
+    {
+        return $this->driverRepository->getAll();
+    }
+
+
 }

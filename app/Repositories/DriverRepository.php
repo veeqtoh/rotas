@@ -12,4 +12,9 @@ class DriverRepository
         #code
     }
 
+    public function getAll()
+    {
+        return $this->driver->paginate(config('app.paginate'));
+    }
+
 }
