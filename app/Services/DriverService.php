@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Repositories\DriverRepository;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 class DriverService
 {
     public function __construct(private DriverRepository $driverRepository)
@@ -10,7 +13,7 @@ class DriverService
         #code
     }
 
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
         return $this->driverRepository->getAll();
     }

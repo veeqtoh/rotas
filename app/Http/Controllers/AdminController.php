@@ -3,11 +3,17 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Services\DriverService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function __construct(private DriverService $driverService)
+    {
+        #code
+    }
+
     public function dashboard(): View
     {
         return view('dashboard');

@@ -313,9 +313,9 @@
                                     </div>
                                 </td>
                                 <td class="table-column-ps-0">
-                                    <a class="d-flex align-items-center" href="{{ route('it.profile', $user) }}">
+                                    <a class="d-flex align-items-center" href="{{ route('profile.edit', $user) }}">
                                         <div class="avatar avatar-circle">
-                                            <img class="avatar-img" src="{{ $user->avatarUrl() }}" alt="avatar">
+                                            <img class="avatar-img" src="{{ $user->user->avatarUrl() }}" alt="avatar">
                                         </div>
                                         <div class="ms-3">
                                             <span class="mb-0 d-block h5 text-inherit">{{ ($user->staff) ? $user->staff->first_name.' '.$user->staff->last_name : $user->customer->first_name.' '.$user->customer->last_name }}
@@ -343,7 +343,7 @@
                                 </td>
                                 <td>{{ ($user->staff) ? ucfirst($user->staff->staff_type) : 'Customer' }}</td>
                                 <td>
-                                    <a href="{{ route('it.profile', $user) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
+                                    <a href="{{ route('profile.edit', $user) }}" class="btn btn-white btn-sm"><i class="bi-pencil-fill me-1"></i> Details</a>
                                 </td>
                             </tr>
                             @empty
