@@ -13,6 +13,7 @@ class UserProfile extends Component
     public $user;
     public $currentView = "basic";
     private AuditService $auditService;
+    private DownloadResponse $downloadResponse;
 
     public function boot(DownloadResponse $downloadResponse, AuditService $auditService)
     {
@@ -38,7 +39,7 @@ class UserProfile extends Component
     public function render()
     {
         return view('livewire.user-profile', [
-            'colleagues' => User::where('id', '!=', $this->user->id)->get(),
+            'colleagues' => User::whereRole('driver')->where('id', '!=', $this->user->id)->get(),
             'audits' => $this->auditService->getAllAudits($this->user->id),
         ]);
     }

@@ -611,6 +611,7 @@
                                             <select wire:model.defer='certificate_title.0' class="js-select form-select" id="certificate_title.0" required>
                                                 <option selected value="">-- Select an item below --</option>
                                                 <option value="Curriculum Vitae">CV</option>
+                                                <option value="Driver's Licence">Driver's Licence</option>
                                                 <option value="NIN">NIN</option>
                                                 <option value="Passport">Passport</option>
                                                 <option value="Proof of Address">Proof of Address</option>

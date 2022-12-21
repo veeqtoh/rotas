@@ -23,7 +23,7 @@
                     <a wire:click.prevent="updateView('nok')" href="#!" class="nav-link {{ $currentView == 'nok' ? 'active' : '' }}">Emmergency contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a wire:click.prevent="updateView('certifications')" href="#!" class="nav-link {{ $currentView == 'certifications' ? 'active' : '' }}">Certifications
+                    <a wire:click.prevent="updateView('certifications')" href="#!" class="nav-link {{ $currentView == 'certifications' ? 'active' : '' }}">Documents
                         <span class="badge bg-soft-dark text-dark rounded-circle ms-1">{{ $user->driver->certifications->count() }}</span>
                     </a>
                 </li>
@@ -64,7 +64,7 @@
 
                             @if(Auth::id() == $user->id)
                             <span class="dropdown-header">Settings</span>
-                            <a class="dropdown-item" href="{{ route('it.settings', $user) }}"> <i class="bi-pen-fill dropdown-item-icon"></i> Update profile </a>
+                            <a class="dropdown-item" href="{{ route('settings', $user) }}"> <i class="bi-pen-fill dropdown-item-icon"></i> Update profile </a>
                             <div class="dropdown-divider"></div>
                             @endif
 
@@ -87,7 +87,7 @@
             <div class="col-lg-4">
                 <!-- Card -->
                 <div class="mb-3 card card-body mb-lg-5">
-                    <h5>Complete your profile</h5>
+                    <h5>Profile completeness</h5>
 
                     <!-- Progress -->
                     <div class="d-flex justify-content-between align-items-center">
@@ -124,9 +124,8 @@
                     <div class="card-body">
                         <ul class="mb-0 list-unstyled list-py-2 text-dark">
                             <li class="pb-0"><span class="card-subtitle">About</span></li>
-                            <li><i class="bi-person dropdown-item-icon"></i> {{ ($user->driver) ? $user->driver->first_name.' '.$user->driver->last_name : $user->customer->first_name.' '.$user->customer->last_name }}</li>
-                            <li><i class="bi-briefcase dropdown-item-icon"></i> {{ ($user->driver) ? $user->department->name : 'No Department' }}</li>
-                            <li><i class="bi-building dropdown-item-icon"></i> {{ ($user->driver) ? 'driver' : 'Customer' }}</li>
+                            <li><i class="bi-person dropdown-item-icon"></i> {{ ($user->driver) ? $user->driver->first_name.' '.$user->driver->last_name : $user->admin->first_name.' '.$user->admin->last_name }}</li>
+                            <li><i class="bi-truck dropdown-item-icon"></i> {{ ($user->driver) ? 'Driver' : 'Admin' }}</li>
 
                             <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</span></li>
                             <li><i class="bi-at dropdown-item-icon"></i> {{ $user->email }}</li>
@@ -175,7 +174,7 @@
                                             @forelse($colleagues as $colleague)
                                             <li>
                                                 <div class="d-flex align-items-center">
-                                                    <a class="d-flex align-items-center me-2" href="{{ route('it.userDetails', $colleague) }}">
+                                                    <a class="d-flex align-items-center me-2" href="{{ route('profile', $colleague) }}">
                                                         <div class="flex-shrink-0">
                                                             <div class="avatar avatar-sm avatar-soft-primary avatar-circle">
                                                                 {{--  <span class="avatar-initials">R</span>  --}}
@@ -184,8 +183,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1 ms-3">
-                                                            <h5 class="mb-0 text-hover-primary">{{ $colleague->driver->first_name }} {{ $colleague->driver->last_name }}</h5>
-                                                            <span class="fs-6 text-body">{{ $colleague->department->name }}</span>
+                                                            <h5 class="mb-0 text-hover-primary">{{ ($colleague->driver) ? $colleague->driver->first_name : $colleague->username}} </h5>
+                                                            <span class="fs-6 text-body">Driver</span>
                                                         </div>
                                                     </a>
                                                     <div class="ms-auto">
@@ -725,11 +724,11 @@
 
                                     <div class="card-body">
                                         @if(pathinfo($certification->src, PATHINFO_EXTENSION) == 'pdf')
-                                        <img class="avatar avatar-4x3" src="{{ asset('backend-assets/svg/brands/pdf-icon.svg') }}" alt="{{ $certification->title }}" />
+                                        <img class="avatar avatar-4x3" src="{{ asset('admin-assets/svg/brands/pdf-icon.svg') }}" alt="{{ $certification->title }}" />
                                         @elseif(pathinfo($certification->src, PATHINFO_EXTENSION) == 'docx')
-                                        <img class="avatar avatar-4x3" src="{{ asset('backend-assets/svg/brands/google-docs-icon.svg') }}" alt="{{ $certification->title }}" />
+                                        <img class="avatar avatar-4x3" src="{{ asset('admin-assets/svg/brands/google-docs-icon.svg') }}" alt="{{ $certification->title }}" />
                                         @elseif(pathinfo($certification->src, PATHINFO_EXTENSION) == 'jpg')
-                                        <img class="avatar avatar-4x3" src="{{ asset('backend-assets/svg/brands/jpg-icon.svg') }}" alt="{{ $certification->title }}" />
+                                        <img class="avatar avatar-4x3" src="{{ asset('admin-assets/svg/brands/jpg-icon.svg') }}" alt="{{ $certification->title }}" />
                                         @endif
 
                                     </div>
@@ -765,11 +764,11 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     @if(pathinfo($certification->src, PATHINFO_EXTENSION) == 'pdf')
-                                    <img class="avatar avatar-xs avatar-4x3" src="{{ asset('backend-assets/svg/brands/pdf-icon.svg') }}" alt="{{ $cert->certificate_title }}" />
+                                    <img class="avatar avatar-xs avatar-4x3" src="{{ asset('admin-assets/svg/brands/pdf-icon.svg') }}" alt="{{ $cert->certificate_title }}" />
                                     @elseif(pathinfo($certification->src, PATHINFO_EXTENSION) == 'docx')
-                                    <img class="avatar avatar-xs avatar-4x3" src="{{ asset('backend-assets/svg/brands/google-docs-icon.svg') }}" alt="{{ $cert->certificate_title }}" />
+                                    <img class="avatar avatar-xs avatar-4x3" src="{{ asset('admin-assets/svg/brands/google-docs-icon.svg') }}" alt="{{ $cert->certificate_title }}" />
                                     @elseif(pathinfo($certification->src, PATHINFO_EXTENSION) == 'jpg')
-                                    <img class="avatar avatar-xs avatar-4x3" src="{{ asset('backend-assets/svg/brands/jpg-icon.svg') }}" alt="{{ $cert->certificate_title }}" />
+                                    <img class="avatar avatar-xs avatar-4x3" src="{{ asset('admin-assets/svg/brands/jpg-icon.svg') }}" alt="{{ $cert->certificate_title }}" />
                                     @endif
                                 </div>
                                 <!-- End Col -->
@@ -1053,7 +1052,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img class="avatar avatar-xss avatar-4x3 me-2" src="{{ asset('backend-assets/svg/brands/mastercard.svg') }}" alt="Image Description" />
+                                        <img class="avatar avatar-xss avatar-4x3 me-2" src="{{ asset('admin-assets/svg/brands/mastercard.svg') }}" alt="Image Description" />
                                         <span class="text-dark">&bull;&bull;&bull;&bull; 4242</span>
                                     </div>
                                 </td>

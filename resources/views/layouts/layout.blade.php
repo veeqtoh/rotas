@@ -309,28 +309,6 @@
                             <!-- Collapse -->
                             <div class="nav-item">
                                 <a
-                                    class="nav-link dropdown-toggle @yield('rotas')"
-                                    href="#navbarVerticalMenuPagesRotasMenu"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarVerticalMenuPagesRotasMenu"
-                                    aria-expanded="true"
-                                    aria-controls="navbarVerticalMenuPagesRotasMenu"
-                                >
-                                    <i class="bi-people nav-icon"></i>
-                                    <span class="nav-link-title">Rotas</span>
-                                </a>
-
-                                <div id="navbarVerticalMenuPagesRotasMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link @yield('rotas')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
-                                    <a class="nav-link @yield('rotas')" href="{{ route('addDriver') }}">Add Driver </a>
-                                </div>
-                            </div>
-                            <!-- End Collapse -->
-
-                            <!-- Collapse -->
-                            <div class="nav-item">
-                                <a
                                     class="nav-link dropdown-toggle @yield('vans')"
                                     href="#navbarVerticalMenuPagesVansMenu"
                                     role="button"
@@ -346,6 +324,28 @@
                                 <div id="navbarVerticalMenuPagesVansMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
                                     <a class="nav-link @yield('vans')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
                                     <a class="nav-link @yield('vans')" href="{{ route('addDriver') }}">Add Driver </a>
+                                </div>
+                            </div>
+                            <!-- End Collapse -->
+
+                            <!-- Collapse -->
+                            <div class="nav-item">
+                                <a
+                                    class="nav-link dropdown-toggle @yield('rotas')"
+                                    href="#navbarVerticalMenuPagesRotasMenu"
+                                    role="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarVerticalMenuPagesRotasMenu"
+                                    aria-expanded="true"
+                                    aria-controls="navbarVerticalMenuPagesRotasMenu"
+                                >
+                                    <i class="bi-calendar-week nav-icon"></i>
+                                    <span class="nav-link-title">Rotas</span>
+                                </a>
+
+                                <div id="navbarVerticalMenuPagesRotasMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <a class="nav-link @yield('rotas')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
+                                    <a class="nav-link @yield('rotas')" href="{{ route('addDriver') }}">Add Driver </a>
                                 </div>
                             </div>
                             <!-- End Collapse -->

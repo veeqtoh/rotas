@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-    <title>{{ ($user->driver) ? $user->driver->first_name.' '.$user->driver->last_name : $user->customer->first_name.' '.$user->customer->last_name }} | N.U.E Portal</title>
+    <title>{{ ($user->driver) ? $user->driver->first_name.' '.$user->driver->last_name : $user->customer->first_name.' '.$user->customer->last_name }} | Admin Portal</title>
 @endsection
 
 @if(Auth::id() == $user->id)
@@ -45,8 +45,8 @@
                         <!-- List -->
                         <ul class="list-inline list-px-2">
                             <li class="list-inline-item">
-                                <i class="bi-building me-1"></i>
-                                <span>{{ ($user->driver) ? 'driver' : '' }}</span>
+                                <i class="bi-truck me-1"></i>
+                                <span>{{ ($user->driver) ? 'Driver' : 'Admin' }}</span>
                             </li>
 
                             <li class="list-inline-item">
