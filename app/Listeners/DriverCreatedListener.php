@@ -32,11 +32,11 @@ class DriverCreatedListener
         $createdUserData = [
             'user_id' => $user->id,
             'action' => 'Account created',
-            'details' => 'Your staff account has been created by '.ucfirst(auth()->user()->username).'',
+            'details' => 'Your driver account has been created by '.ucfirst(auth()->user()->username).'',
         ];
         $adminUserData = [
             'user_id' => auth()->user()->id,
-            'action' => 'Created staff account',
+            'action' => 'Created driver account',
             'details' => 'You created an account for '.ucfirst($user->driver->first_name).'',
         ];
         $this->auditService->storeAudit($createdUserData);
