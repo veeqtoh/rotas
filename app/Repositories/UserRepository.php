@@ -68,9 +68,9 @@ class UserRepository
         return $user->staff->update($data);
     }
 
-    public function updatePassword($password)
+    public function updatePassword(?User $user, string $password)
     {
-        $user = $this->user->getById(auth()->user()->id);
+        $user = $this->getById($user->id);
         return $user->update(['password' => Hash::make($password)]);
     }
 }

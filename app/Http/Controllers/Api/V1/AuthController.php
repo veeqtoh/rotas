@@ -31,7 +31,12 @@ class AuthController extends Controller
 
     public function changePassword(ChangePasswordRequest $request): JsonResponse
     {
-        $responseData = $this->authService->changePassword($request->post('currentPassword'), $request->post('newPassword'));
+        $user = $this->userRepository->getByEmailOrUsername($request->post('field'));
+        $responseData = $this->authService->changePassword($user, $request->post('currentPassword'), $request->post('newPassword'));
+        if(response()->json($responseData)->getData()->success == false)
+        {
+            return response()->json($responseData, ResponseConstant::HTTP_FORBIDDEN);
+        }
         return response()->json($responseData, ResponseConstant::HTTP_OK);
     }
 

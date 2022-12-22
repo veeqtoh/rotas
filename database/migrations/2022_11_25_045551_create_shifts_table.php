@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('driver_id')->constrained()->cascadeOnDelete();
             $table->foreignId('van_id')->constrained()->cascadeOnDelete();
             $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->timestamp('end_time')->nullable();
             $table->string('description');
             $table->timestamp('clock_in_time')->nullable();
             $table->timestamp('clock_out_time')->nullable();

@@ -31,7 +31,8 @@ class AuthenticationService
     public function checkPasswordIsChanged(?User $user): void
     {
         if (!Hash::check($user->password, 'Pass2022')) {
-            abort(response('Please change your password to proceed.', 403));
+            abort(response(['status' => false,
+                            'message' => 'Please change your password to proceed.'], 409));
         }
     }
 
@@ -51,14 +52,18 @@ class AuthenticationService
         return $user->createToken(config('auth.token_name'), $permissions)->plainTextToken;
     }
 
-    public function changePassword(string $currentPassword, string $newPassword): VeeqPayload
+    public function changePassword(?User $user, string $currentPassword, string $newPassword): VeeqPayload
     {
-        if (! Hash::check($currentPassword, auth()->user()->getAuthPassword())) {
+        if (!$user) {
+            return $this->payload->setPayload(false, 'Invalid username or email');
+        }elseif (! Hash::check($currentPassword, $user->password)) {
             return $this->payload->setPayload(false, 'Invalid current password');
+        }elseif ($newPassword == 'Pass2022') {
+            return $this->payload->setPayload(false, 'Please provide a different password');
         }
 
-        $this->userRepository->updatePassword($newPassword);
-        return $this->payload->setPayload(true, 'Password changed successfully');
+        $this->userRepository->updatePassword($user, $newPassword);
+        return $this->payload->setPayload(true, 'Password changed successfully', $this->userDetails($user));
     }
 
     public function invalidateTokens(User $user): VeeqPayload
