@@ -112,5 +112,6 @@ return [
     */
 
     'password_timeout' => 10800,
+    'token_name' => 'AccessAuthToken',
 
 ];
