@@ -19,29 +19,28 @@ class AuthenticationService
 
     public function login(?User $user, string $password): VeeqPayload
     {
-        if (!$user || Hash::check($password, $user->password)) {
+        if (!$user || ! Hash::check($password, $user->password)) {
             $this->payload->setPayload(false, 'Invalid credentials', new stdClass());
         } else {
             $this->checkPasswordIsChanged($user);
-
+            $this->payload->setPayload(true, 'Login successful', $this->userDetails($user));
         }
         return $this->payload;
     }
 
-    public function checkPasswordIsChanged(?User $user): bool
+    public function checkPasswordIsChanged(?User $user): void
     {
-        if (Hash::check($user->password, 'Pass2022')) {
-            abort(403, 'Please change your password to proceed.', $headers);
+        if (!Hash::check($user->password, 'Pass2022')) {
+            abort(response('Please change your password to proceed.', 403));
         }
-        return;
     }
 
-    public function userDetailWithRoleAndPermissions(User $user): array
+    public function userDetails(User $user): array
     {
         return  [
             'auth_token' => $this->createAuthToken($user),
             'user' => UserResource::make($user),
-            'shifts' => $user>shift(),
+            'shifts' => $user->driver->shifts(),
             // 'permissions' => $user->getAllPermissions()
         ];
     }

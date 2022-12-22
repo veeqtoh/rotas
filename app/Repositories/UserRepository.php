@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserRepository
@@ -19,7 +18,7 @@ class UserRepository
         return $this->user->findorFail($id);
     }
 
-    public function getByEmailOrUsername($field): User
+    public function getByEmailOrUsername(string $field)
     {
         return $this->user->where('email', $field)->orWhere('username', $field)->first();
     }

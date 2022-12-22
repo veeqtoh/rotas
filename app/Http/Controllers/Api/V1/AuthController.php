@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\ChangePasswordRequest;
 use App\Http\Requests\Api\V1\LoginRequest;
 use App\Repositories\UserRepository;
 use App\Services\Api\V1\AuthenticationService;
@@ -20,7 +21,24 @@ class AuthController extends Controller
     public function login(LoginRequest $request): JsonResponse
     {
         $user = $this->userRepository->getByEmailOrUsername($request->post('field'));
-        $response = $this->authService->login($user, $request->post('password'));
-        return response()->json($response, ResponseConstant::HTTP_OK);
+        $responseData = $this->authService->login($user, $request->post('password'));
+        if(response()->json($responseData)->getData()->success == false)
+        {
+            return response()->json($responseData, ResponseConstant::HTTP_FORBIDDEN);
+        }
+        return response()->json($responseData, ResponseConstant::HTTP_OK);
+    }
+
+    public function changePassword(ChangePasswordRequest $request): JsonResponse
+    {
+        $responseData = $this->authService->changePassword($request->post('currentPassword'), $request->post('newPassword'));
+        return response()->json($responseData, ResponseConstant::HTTP_OK);
+    }
+
+    public function logout(): JsonResponse
+    {
+        $user = auth()->user();
+        $this->authenticationService->invalidateTokens($user);
+        return response()->json(['message' => 'Logout successful'], ResponseConstant::HTTP_OK);
     }
 }
