@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class DriverWelcome extends Mailable
+class DriverWelcome extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +31,7 @@ class DriverWelcome extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Driver Welcome',
+            subject: 'Your Driver account details',
         );
     }
 
@@ -43,7 +43,7 @@ class DriverWelcome extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.new-account',
         );
     }
 
