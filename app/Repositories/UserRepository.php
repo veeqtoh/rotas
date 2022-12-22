@@ -19,6 +19,11 @@ class UserRepository
         return $this->user->findorFail($id);
     }
 
+    public function getByEmailOrUsername($field): User
+    {
+        return $this->user->where('email', $field)->orWhere('username', $field)->first();
+    }
+
     public function getAll(): ?LengthAwarePaginator
     {
         return $this->user->latest()->paginate(config('app.paginate'));

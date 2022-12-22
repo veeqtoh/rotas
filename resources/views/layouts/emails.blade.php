@@ -479,7 +479,7 @@ table, td { color: #000000; } a { color: #B56576; text-decoration: underline; } 
 
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
-    <p style="font-size: 14px; line-height: 140%;">Need help? Contact our IT team. it@nueoffshore.com</p>
+    <p style="font-size: 14px; line-height: 140%;">Need help? Contact our IT team. it@rotas.com</p>
   </div>
 
       </td>

@@ -16,11 +16,14 @@
             <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
             <p style="font-size: 14px; line-height: 140%;">
                 <span style="color: #666666; font-size: 18px; line-height: 25.2px;">
-                    Your employee account has been setup successfully.
-                    Your account details are as follows:
-                    Email: {{ $this->email }}
+                    Your employee account has been setup successfully. Your account details are as follows:
+                </span>
+                <span style="color: #666666; font-size: 18px; line-height: 25.2px;">
+                    Email: {{ Arr::first($__data['message']->getTo())->toString()  }}</br></br>
                     password: Pass2022
-                    You must change your password uponlogin to proceed.
+                </span>
+                <span style="color: #666666; font-size: 18px; line-height: 25.2px;">
+                    You must change your password upon login to proceed.
                 </span>
             </p>
             <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>

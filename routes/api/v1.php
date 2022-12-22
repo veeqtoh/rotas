@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\V1\AuthController;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::group(['prefix' => 'auth'], function(){
+    Route::post('login', [AuthController::class, 'login']);
+
+    Route::group(['middleware' => ['auth:sanctum', 'checkPassword']], function(){
+        Route::post('change-password', [AuthController::class, 'changePassword']);
+        Route::post('logout', [AuthController::class, 'logout']);
+    });
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
