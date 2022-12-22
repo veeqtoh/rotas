@@ -6,7 +6,7 @@
 
     @section('title')
         <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-            <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-size: 28px; line-height: 39.2px; color: #ffffff; font-family: Lato, sans-serif;">File Received</span></p>
+            <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-size: 28px; line-height: 39.2px; color: #ffffff; font-family: Lato, sans-serif;">Account Details</span></p>
         </div>
     @endsection
 
@@ -16,8 +16,11 @@
             <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
             <p style="font-size: 14px; line-height: 140%;">
                 <span style="color: #666666; font-size: 18px; line-height: 25.2px;">
-                    You have received a file from our shared drive.
-                    The file expires <em>{{ $sharedFile->expires_at->diffForHumans() }}</em>
+                    Your employee account has been setup successfully.
+                    Your account details are as follows:
+                    Email: {{ $this->email }}
+                    password: Pass2022
+                    You must change your password uponlogin to proceed.
                 </span>
             </p>
             <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
@@ -25,16 +28,37 @@
     @endsection
 
     @section('cta')
-        <a href="{{ route('download', $sharedFile) }}" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:'Lato',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #B56576; border-radius: 1px;-webkit-border-radius: 1px; -moz-border-radius: 1px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+        <a href="{{ route('login') }}" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:'Lato',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #B56576; border-radius: 1px;-webkit-border-radius: 1px; -moz-border-radius: 1px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
             <span style="display:block;padding:15px 40px;line-height:120%;">
-                <span style="font-size: 18px; line-height: 21.6px;">Get your files</span>
+                <span style="font-size: 18px; line-height: 21.6px;">Complete setup</span>
             </span>
         </a>
     @endsection
 
     @section('extra')
         <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-            <p style="font-size: 14px; line-height: 140%;"><span style="color: #888888; font-size: 14px; line-height: 19.6px;"><em><span style="font-size: 16px; line-height: 22.4px;">You can also <span style="font-size: 16px; line-height: 22.4px;"><span style="color: #B56576; font-size: 16px; line-height: 22.4px; text-decoration: underline;"><a rel="noopener" href="{{ route('download', $sharedFile) }}" target="_blank" style="color: #B56576; text-decoration: underline;">click here to get your files <span style="font-size: 16px; line-height: 22.4px;"></span> &rarr;</a></span></span></span></em></span><br /><span style="color: #888888; font-size: 14px; line-height: 19.6px;"><em><span style="font-size: 16px; line-height: 22.4px;">&nbsp;</span></em></span></p>
+            <p style="font-size: 14px; line-height: 140%;">
+                <span style="color: #888888; font-size: 14px; line-height: 19.6px;">
+                    <em>
+                        <span style="font-size: 16px; line-height: 22.4px;">You can also <span style="font-size: 16px; line-height: 22.4px;">
+                            <span style="color: #B56576; font-size: 16px; line-height: 22.4px; text-decoration: underline;">
+                                <a rel="noopener" href="{{ route('login') }}" target="_blank" style="color: #B56576; text-decoration: underline;">
+                                    click here to complete your profile
+                                    <span style="font-size: 16px; line-height: 22.4px;"></span>
+                                    &rarr;
+                                    </a>
+                                </span>
+                            </span>
+                        </span>
+                    </em>
+                </span>
+                <br />
+                <span style="color: #888888; font-size: 14px; line-height: 19.6px;">
+                    <em>
+                        <span style="font-size: 16px; line-height: 22.4px;">&nbsp;</span>
+                    </em>
+                </span>
+            </p>
             {{--  <p style="font-size: 14px; line-height: 140%;"><span style="color: #888888; font-size: 14px; line-height: 19.6px;"><em><span style="font-size: 16px; line-height: 22.4px;">If you didn't initiate this, you can ignore this email. <span style="font-size: 16px; line-height: 22.4px;"><span style="color: #B56576; font-size: 16px; line-height: 22.4px; text-decoration: underline;"></span></span></span></em></span><br /><span style="color: #888888; font-size: 14px; line-height: 19.6px;"><em><span style="font-size: 16px; line-height: 22.4px;">&nbsp;</span></em></span></p>  --}}
         </div>
     @endsection

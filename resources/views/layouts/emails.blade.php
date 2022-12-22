@@ -164,7 +164,7 @@ table, td { color: #000000; } a { color: #B56576; text-decoration: underline; } 
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
 
-      <img align="center" border="0" src="{{ asset('email-assets/images/image-6.jpg') }}" alt="N.U.E Logo" title="N.U.E Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 29%;max-width: 88.2px;" width="88.2"/>
+      <img align="center" border="0" src="{{ asset('email-assets/images/image-16.jpg') }}" alt="Logo" title="Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 29%;max-width: 88.2px;" width="88.2"/>
 
     </td>
   </tr>
@@ -318,8 +318,8 @@ table, td { color: #000000; } a { color: #B56576; text-decoration: underline; } 
 
         <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
             <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 16px; line-height: 22.4px; color: #ecf0f1;">The IT Team</span></p>
-            <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px; color: #ecf0f1;">N.U.E Offshore Resources LTD.</span></p>
-            <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px; color: #ecf0f1;">it@nueoffshore.com</span></p>
+            <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px; color: #ecf0f1;">Rotas</span></p>
+            <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px; color: #ecf0f1;">it@rotas.com</span></p>
         </div>
 
       </td>

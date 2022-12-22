@@ -31,7 +31,7 @@ class DriverWelcome extends Mailable implements ShouldQueue
     public function envelope()
     {
         return new Envelope(
-            subject: 'Your Driver account details',
+            subject: 'Your Employee account details',
         );
     }
 
