@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Services\AuditService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -12,7 +13,7 @@ class DriverCreatedListener
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(private AuditService $auditService)
     {
         //
     }
