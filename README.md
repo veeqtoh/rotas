@@ -33,7 +33,7 @@ password: password
 
 # API URLs
 
-API endpoints arefound in the API documentation
+API endpoints are found in the API documentation here https://documenter.getpostman.com/view/21415916/2s8Z6u5usG
 
 # Admin URL
 
