@@ -323,7 +323,7 @@
                                             </div>
                                         </div>
                                         <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-0 text-inherit">{{ ($user->driver) ? $user->driver->first_name.' '.$user->driver->last_name : $user->admin->first_name.' '.$user->admin->last_name }}</h5>
+                                            <h5 class="mb-0 text-inherit">{{ $user->username }}</h5>
                                         </div>
                                     </a>
                                 </td>
