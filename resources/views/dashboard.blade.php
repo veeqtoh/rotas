@@ -93,7 +93,7 @@
                             <span class="badge bg-soft-success text-success">
                                 <i class="bi-graph-up"></i> 12.5%
                             </span>
-                            <span class="text-body fs-6 ms-1">customers & staff inclusive</span>
+                            <span class="text-body fs-6 ms-1">admins & drivers inclusive</span>
                         </div>
                     </a>
                     <!-- End Card -->
@@ -306,7 +306,39 @@
                         </thead>
 
                         <tbody>
-
+                            @foreach ($allUsers as $user)
+                            <tr>
+                                <td class="table-column-pe-0">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="usersDataCheck16">
+                                        <label class="form-check-label" for="usersDataCheck16"></label>
+                                    </div>
+                                </td>
+                                <td class="table-column-ps-0">
+                                    <a class="d-flex align-items-center" href="{{ route('profile', $user) }}">
+                                        <div class="flex-shrink-0">
+                                            <div class="avatar avatar-sm avatar-soft-danger avatar-circle">
+                                                {{--  <span class="avatar-initials">M</span>  --}}
+                                                <img class="avatar-img" src="{{ $user->avatarUrl() }}" alt="{{ $user->username }}">
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-0 text-inherit">{{ ($user->driver) ? $user->driver->first_name.' '.$user->driver->last_name : $user->admin->first_name.' '.$user->admin->last_name }}</h5>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="legend-indicator {{  ($user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($user->isActive()) ? 'Active' : 'Inactive' }}
+                                </td>
+                                <td>
+                                    <span class="mb-0 d-block h5">{{ ($user->driver) ? 'Driver' : 'Admin' }}</span>
+                                    {{--  <span class="d-block fs-5">{{ ($user->driver) ? $user->driver->department->name : ''}}</span>  --}}
+                                </td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at->diffForHumans() }}</td>
+                                <td>{{ $user->last_login ? $user->last_login->diffForHumans() : 'Never logged in' }}</td>
+                            </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

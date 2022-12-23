@@ -17,7 +17,10 @@ class AdminController extends Controller
 
     public function dashboard(): View
     {
-        return view('dashboard');
+        $allUsers = $this->userService->getAllUsers();
+        return view('dashboard', [
+            'allUsers' => $allUsers,
+        ]);
     }
 
     public function addDriver(): View
