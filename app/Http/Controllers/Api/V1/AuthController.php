@@ -43,7 +43,7 @@ class AuthController extends Controller
     public function logout(): JsonResponse
     {
         $user = auth()->user();
-        $this->authenticationService->invalidateTokens($user);
+        $this->authService->invalidateTokens($user);
         return response()->json(['message' => 'Logout successful'], ResponseConstant::HTTP_OK);
     }
 }

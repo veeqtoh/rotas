@@ -21,8 +21,12 @@ Route::group(['prefix' => 'auth'], function(){
     Route::post('login', [AuthController::class, 'login']);
     Route::post('change-password', [AuthController::class, 'changePassword']);
 
-    Route::group(['middleware' => ['auth:sanctum', 'checkPassword']], function(){
+    Route::group(['middleware' => ['auth:sanctum']], function(){
         Route::post('logout', [AuthController::class, 'logout']);
+
+        Route::group(['middleware' => ['checkPassword']], function(){
+            // Route::post('logout', [AuthController::class, 'logout']);
+        });
     });
 });
 
