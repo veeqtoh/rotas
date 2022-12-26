@@ -85,4 +85,9 @@ class AdminController extends Controller
         return view('add-shift');
     }
 
+    public function vans(): View
+    {
+        return view('vans');
+    }
+
 }

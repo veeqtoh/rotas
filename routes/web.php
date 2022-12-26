@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth', 'admin'],], function(){
         Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::get('drivers', 'drivers')->name('drivers');
         Route::get('admins', 'admins')->name('admins');
+        Route::get('admins', 'vans')->name('vans');
         Route::get('rotas', 'rotas')->name('rotas');
         Route::get('add-shift', 'addShift')->name('addShift');
         Route::get('add-driver', 'addDriver')->name('addDriver');
