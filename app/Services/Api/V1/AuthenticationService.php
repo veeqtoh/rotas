@@ -32,7 +32,7 @@ class AuthenticationService
 
     public function checkPasswordIsChanged(?User $user): void
     {
-        if (Hash::check($user->password, 'Pass2022')) {
+        if ($user->password == 'Pass2022') {
             abort(response(['status' => false,
                             'message' => 'Please change your password to proceed.'], 409));
         }
