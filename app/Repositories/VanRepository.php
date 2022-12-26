@@ -23,4 +23,21 @@ class VanRepository
         return $this->van->whereUuid($uuid)->firstOrFail();
     }
 
+    public function getById($id): van
+    {
+        return $this->van->whereId($id)->firstOrFail();
+    }
+
+    public function destroy(int $id)
+    {
+        $van = $this->getById($id);
+        return $van->delete();
+    }
+
+    public function update(int $id, array $data)
+    {
+        $van = $this->getById($id);
+        return $van->update($data);
+    }
+
 }
