@@ -4,12 +4,18 @@ declare(strict_types = 1);
 namespace App\Repositories;
 
 use App\Models\Shift;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ShiftRepository
 {
     public function __construct(private Shift $shift)
     {
         #code
+    }
+
+    public function getAll(): LengthAwarePaginator
+    {
+        return $this->shift->latest()->paginate(config('app.paginate'));
     }
 
     public function getByUuId($uuid): Shift

@@ -5,22 +5,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Shift;
 use App\Services\DriverService;
+use App\Services\ShiftService;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function __construct(private UserService $userService, private DriverService $driverService)
+    public function __construct(private UserService $userService,
+                                private DriverService $driverService,
+                                private ShiftService $shiftService)
     {
         #code
     }
 
     public function dashboard(): View
     {
+        $allShifts = $this->shiftService->getAll();
         $allUsers = $this->userService->getAllUsers();
         return view('dashboard', [
             'allUsers' => $allUsers,
+            'allShifts' => $allShifts,
         ]);
     }
 
@@ -75,4 +79,10 @@ class AdminController extends Controller
 
         return view('rotas', compact('events'));
     }
+
+    public function addShift(): View
+    {
+        return view('add-shift');
+    }
+
 }

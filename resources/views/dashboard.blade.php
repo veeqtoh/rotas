@@ -42,7 +42,7 @@
 
                             <div class="mb-1 row align-items-center gx-2">
                                 <div class="col-6">
-                                    {{--  <h2 class="card-title text-inherit">{{ $usersCount }}</h2>  --}}
+                                    <h2 class="card-title text-inherit">{{ $allUsers->count() }}</h2>
                                 </div>
                                 <!-- End Col -->
 
@@ -101,13 +101,13 @@
 
                 <div class="mb-3 col-sm-6 col-lg-3 mb-lg-5">
                     <!-- Card -->
-                    <a class="card card-hover-shadow h-100" href="#">
+                    <a class="card card-hover-shadow h-100" href="{{ route('rotas') }}">
                         <div class="card-body">
                             <h6 class="card-subtitle">Rotas</h6>
 
                             <div class="mb-1 row align-items-center gx-2">
                                 <div class="col-6">
-                                    <h2 class="card-title text-inherit">92,913</h2>
+                                    <h2 class="card-title text-inherit">{{ $allShifts->count() }}</h2>
                                 </div>
                                 <!-- End Col -->
 
@@ -156,7 +156,7 @@
                             <!-- End Row -->
 
                             <span class="badge bg-soft-secondary text-body">0.0%</span>
-                            <span class="text-body fs-6 ms-1">from 2,913</span>
+                            <span class="text-body fs-6 ms-1">from {{ now()->year }}</span>
                         </div>
                     </a>
                     <!-- End Card -->
@@ -389,219 +389,6 @@
             </div>
             <!-- End Card -->
 
-            <div class="row">
-                <div class="mb-3 col-lg-6 mb-lg-0">
-                    <!-- Card -->
-                    <div class="card h-100">
-                        <!-- Header -->
-                        <div class="card-header card-header-content-sm-between">
-                            <h4 class="mb-2 card-header-title mb-sm-0">Transactions</h4>
-
-                            <!-- Daterangepicker -->
-                            <button id="js-daterangepicker-predefined" class="btn btn-ghost-secondary btn-sm dropdown-toggle">
-                                <i class="bi-calendar-week"></i>
-                                <span class="js-daterangepicker-predefined-preview ms-1"></span>
-                            </button>
-                            <!-- End Daterangepicker -->
-                        </div>
-                        <!-- End Header -->
-
-                        <!-- Body -->
-                        <div class="card-body">
-                            <!-- Chart -->
-                            <div class="mx-auto chartjs-custom" style="height: 20rem;">
-                                <canvas class="js-chart-datalabels" data-hs-chartjs-options='{
-                                "type": "bubble",
-                                "data": {
-                                    "datasets": [
-                                    {
-                                        "label": "Label 1",
-                                        "data": [
-                                        {"x": 55, "y": 65, "r": 99}
-                                        ],
-                                        "color": "#fff",
-                                        "backgroundColor": "rgba(55, 125, 255, 0.9)",
-                                        "borderColor": "transparent"
-                                    },
-                                    {
-                                        "label": "Label 2",
-                                        "data": [
-                                        {"x": 33, "y": 42, "r": 65}
-                                        ],
-                                        "color": "#fff",
-                                        "backgroundColor": "rgba(100, 0, 214, 0.8)",
-                                        "borderColor": "transparent"
-                                    },
-                                    {
-                                        "label": "Label 3",
-                                        "data": [
-                                        {"x": 46, "y": 26, "r": 38}
-                                        ],
-                                        "color": "#fff",
-                                        "backgroundColor": "#00c9db",
-                                        "borderColor": "transparent"
-                                    }
-                                    ]
-                                },
-                                "options": {
-                                    "scales": {
-                                    "yAxes": [{
-                                        "gridLines": {
-                                        "display": false
-                                        },
-                                        "ticks": {
-                                        "display": false,
-                                        "max": 100,
-                                        "beginAtZero": true
-                                        }
-                                    }],
-                                    "xAxes": [{
-                                    "gridLines": {
-                                        "display": false
-                                        },
-                                        "ticks": {
-                                        "display": false,
-                                        "max": 100,
-                                        "beginAtZero": true
-                                        }
-                                    }]
-                                    },
-                                    "tooltips": false
-                                }
-                                }'></canvas>
-                            </div>
-                            <!-- End Chart -->
-
-                            <div class="row justify-content-center">
-                                <div class="col-auto">
-                                    <span class="legend-indicator bg-primary"></span> New
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto">
-                                    <span class="legend-indicator" style="background-color: #7000f2;"></span> Pending
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto">
-                                    <span class="legend-indicator bg-info"></span> Failed
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                        </div>
-                        <!-- End Body -->
-                    </div>
-                    <!-- End Card -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Card -->
-                    <div class="card h-100">
-                        <!-- Header -->
-                        <div class="card-header card-header-content-between">
-                            <h4 class="card-header-title">Reports overview</h4>
-
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="reportsOverviewDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="mt-1 dropdown-menu dropdown-menu-end" aria-labelledby="reportsOverviewDropdown1">
-                                    <span class="dropdown-header">Settings</span>
-
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi-share-fill dropdown-item-icon"></i> Share reports
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi-download dropdown-item-icon"></i> Download
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi-alt dropdown-item-icon"></i> Connect other apps
-                                    </a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <span class="dropdown-header">Feedback</span>
-
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi-chat-left-dots dropdown-item-icon"></i> Report
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Dropdown -->
-                        </div>
-                        <!-- End Header -->
-
-                        <!-- Body -->
-                        <div class="card-body">
-                            <span class="mb-4 h1 d-block">$7,431.14 USD</span>
-
-                            <!-- Progress -->
-                            <div class="mb-2 progress rounded-pill">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="top" title="Gross value"></div>
-                                <div class="opacity-50 progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="top" title="Net volume from sales"></div>
-                                <div class="opacity-25 progress-bar" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="top" title="New volume from sales"></div>
-                            </div>
-
-                            <div class="mb-4 d-flex justify-content-between">
-                                <span>0%</span>
-                                <span>100%</span>
-                            </div>
-                            <!-- End Progress -->
-
-                            <!-- Table -->
-                            <div class="table-responsive">
-                                <table class="table mb-0 table-lg table-nowrap card-table">
-                                    <tr>
-                                        <th scope="row">
-                                            <span class="legend-indicator bg-primary"></span>Gross value
-                                        </th>
-                                        <td>$3,500.71</td>
-                                        <td>
-                                            <span class="badge bg-soft-success text-success">+12.1%</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">
-                                            <span class="opacity-50 legend-indicator bg-primary"></span>Net volume from sales
-                                        </th>
-                                        <td>$2,980.45</td>
-                                        <td>
-                                            <span class="badge bg-soft-warning text-warning">+6.9%</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">
-                                            <span class="opacity-25 legend-indicator bg-primary"></span>New volume from sales
-                                        </th>
-                                        <td>$950.00</td>
-                                        <td>
-                                            <span class="badge bg-soft-danger text-danger">-1.5%</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">
-                                            <span class="legend-indicator"></span>Other
-                                        </th>
-                                        <td>32</td>
-                                        <td>
-                                            <span class="badge bg-soft-success text-success">1.9%</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <!-- End Table -->
-                        </div>
-                        <!-- End Body -->
-                    </div>
-                    <!-- End Card -->
-                </div>
-            </div>
         </div>
         <!-- End Content -->
 

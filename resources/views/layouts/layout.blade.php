@@ -336,7 +336,7 @@
 
                                 <div id="navbarVerticalMenuPagesVansMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
                                     <a class="nav-link @yield('vans')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
-                                    <a class="nav-link @yield('vans')" href="{{ route('addDriver') }}">Add Driver </a>
+                                    <a class="nav-link @yield('vans')" href="{{ route('addDriver') }}">Add Van </a>
                                 </div>
                             </div>
                             <!-- End Collapse -->
@@ -357,8 +357,8 @@
                                 </a>
 
                                 <div id="navbarVerticalMenuPagesRotasMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                    <a class="nav-link @yield('rotas')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
-                                    <a class="nav-link @yield('rotas')" href="{{ route('addDriver') }}">Add Driver </a>
+                                    <a class="nav-link @yield('rotas')" href="{{ route('rotas') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
+                                    <a class="nav-link @yield('addShift')" href="{{ route('addShift') }}">Add Shift </a>
                                 </div>
                             </div>
                             <!-- End Collapse -->
@@ -380,7 +380,7 @@
 
                                 <div id="navbarVerticalMenuPagesAdminsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu">
                                     <a class="nav-link @yield('admins')" href="{{ route('drivers') }}">Overview <span class="badge bg-info rounded-pill ms-1">New</span></a>
-                                    <a class="nav-link @yield('admins')" href="{{ route('addDriver') }}">Add Driver </a>
+                                    <a class="nav-link @yield('admins')" href="{{ route('addDriver') }}">Add Admin Account </a>
                                 </div>
                             </div>
                             <!-- End Collapse -->

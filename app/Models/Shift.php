@@ -18,6 +18,7 @@ class Shift extends Model
     {
         static::creating(function ($model) {
             $model->uuid = Str::uuid();
+            $model->rota_id = 1;
         });
     }
 

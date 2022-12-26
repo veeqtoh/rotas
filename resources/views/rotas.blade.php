@@ -22,8 +22,8 @@
                     <!-- End Col -->
 
                     <div class="col-auto">
-                        <a class="btn btn-primary" href="{{ route('addDriver') }}">
-                            <i class="bi-person-plus-fill me-1"></i> Add drivers
+                        <a class="btn btn-primary" href="{{ route('addShift') }}">
+                            <i class="bi-calendar-plus-fill me-1"></i> New Shift
                         </a>
                     </div>
                     <!-- End Col -->
