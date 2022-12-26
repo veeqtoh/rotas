@@ -4,7 +4,7 @@
     <title>Vans | Admin Portal</title>
 @endsection
 
-@section('drivers')
+@section('vans')
     active
 @endsection
 
