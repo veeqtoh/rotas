@@ -24,15 +24,15 @@ class AuthenticationService
         if (!$user || ! Hash::check($password, $user->password)) {
             $this->payload->setPayload(false, 'Invalid credentials', new stdClass());
         } else {
-            $this->checkPasswordIsChanged($user);
+            $this->checkPasswordIsChanged($password);
             $this->payload->setPayload(true, 'Login successful', $this->userDetails($user));
         }
         return $this->payload;
     }
 
-    public function checkPasswordIsChanged(?User $user): void
+    public function checkPasswordIsChanged(string $password): void
     {
-        if ($user->password == 'Pass2022') {
+        if ($password == 'Pass2022') {
             abort(response(['status' => false,
                             'message' => 'Please change your password to proceed.'], 409));
         }
