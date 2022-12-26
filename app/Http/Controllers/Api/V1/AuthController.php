@@ -46,4 +46,5 @@ class AuthController extends Controller
         $this->authService->invalidateTokens($user);
         return response()->json(['message' => 'Logout successful'], ResponseConstant::HTTP_OK);
     }
+
 }

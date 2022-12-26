@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace App\Services\Api\V1;
 
-use App\Http\Resources\Api\V1\ShiftCollection;
 use stdClass;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Http\VeeqPayload;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\Api\V1\UserResource;
+use App\Http\Resources\Api\V1\ShiftCollection;
 
 class AuthenticationService
 {
@@ -39,10 +40,14 @@ class AuthenticationService
 
     public function userDetails(User $user): array
     {
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         return  [
             'auth_token' => $this->createAuthToken($user),
             'user' => UserResource::make($user),
-            'shifts' => ShiftCollection::make($user->driver->shifts),
+            'shifts' => ShiftCollection::make($user->driver->shifts->whereBetween('start_time', [$weekStartDate, $weekEndDate] )),
             // 'permissions' => $user->getAllPermissions()
         ];
     }

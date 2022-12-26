@@ -17,9 +17,10 @@ class CheckPassword
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Hash::check(auth()->user()->password, 'Pass2022')) {
+        if (Hash::check(auth()->user()->password, 'Pass2022')) {
             abort(response(['status' => false,
                             'message' => 'Please change your password to proceed.'], 409));
         }
+        return $next($request);
     }
 }

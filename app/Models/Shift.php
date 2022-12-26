@@ -21,6 +21,13 @@ class Shift extends Model
         });
     }
 
+    protected $casts = [
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+        'clock_in_time' => 'datetime',
+        'clock_out_time' => 'datetime',
+    ];
+
     public function rota(): BelongsTo
     {
         return $this->belongsTo(Rota::class);
