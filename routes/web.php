@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth', 'admin'],], function(){
         Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::get('drivers', 'drivers')->name('drivers');
         Route::get('admins', 'admins')->name('admins');
+        Route::get('rotas', 'rotas')->name('rotas');
         Route::get('add-driver', 'addDriver')->name('addDriver');
         Route::get('add-admin', 'addAdmin')->name('addAdmin');
         Route::get('profile/{user:uuid}', 'profile')->name('profile');

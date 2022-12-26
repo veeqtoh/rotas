@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Shift;
 use App\Services\DriverService;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
@@ -55,5 +56,23 @@ class AdminController extends Controller
             'user' => $userDetails,
             // 'colleagues' => $colleagues,
         ]);
+    }
+
+    public function rotas(): View
+    {
+        $events = [];
+
+        $shifts = Shift::with('driver')->get();
+
+        foreach ($shifts as $shift) {
+            $events[] = [
+                'id' => $shift->uuid,
+                'title' => $shift->driver->first_name . ' '.$shift->driver->last_name. ' ('.$shift->description.')',
+                'start' => $shift->start_time,
+                'end' => $shift->end_time,
+            ];
+        }
+
+        return view('rotas', compact('events'));
     }
 }

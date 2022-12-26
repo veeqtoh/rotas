@@ -26,4 +26,13 @@ class Shift extends Model
         return $this->belongsTo(Rota::class);
     }
 
+    public function driver(): BelongsTo
+    {
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function van(): BelongsTo
+    {
+        return $this->belongsTo(Van::class);
+    }
 }

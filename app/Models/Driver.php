@@ -39,4 +39,9 @@ class Driver extends Model
         return $this->hasMany(NextOfKin::class);
     }
 
+    public function getAllShifts()
+    {
+        return $this->shifts();
+    }
+
 }

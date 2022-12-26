@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Services\Api\V1;
 
+use App\Http\Resources\Api\V1\ShiftCollection;
 use stdClass;
 use App\Models\User;
 use App\Http\VeeqPayload;
@@ -30,7 +31,7 @@ class AuthenticationService
 
     public function checkPasswordIsChanged(?User $user): void
     {
-        if (!Hash::check($user->password, 'Pass2022')) {
+        if (Hash::check($user->password, 'Pass2022')) {
             abort(response(['status' => false,
                             'message' => 'Please change your password to proceed.'], 409));
         }
@@ -41,7 +42,7 @@ class AuthenticationService
         return  [
             'auth_token' => $this->createAuthToken($user),
             'user' => UserResource::make($user),
-            'shifts' => $user->driver->shifts(),
+            'shifts' => ShiftCollection::make($user->driver->shifts),
             // 'permissions' => $user->getAllPermissions()
         ];
     }

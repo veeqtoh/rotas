@@ -8,53 +8,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="author" content="Victor John Ukam" />
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('hse-assets/img/favicon/apple-icon-57x57.png') }}" />
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('hse-assets/img/favicon/apple-icon-60x60.png') }}" />
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('hse-assets/img/favicon/apple-icon-72x72.png') }}" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('hse-assets/img/favicon/apple-icon-76x76.png') }}" />
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('hse-assets/img/favicon/apple-icon-114x114.png') }}" />
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('hse-assets/img/favicon/apple-icon-120x120.png') }}" />
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('hse-assets/img/favicon/apple-icon-144x144.png') }}" />
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('hse-assets/img/favicon/apple-icon-152x152.png') }}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('hse-assets/img/favicon/apple-icon-180x180.png') }}" />
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('hse-assets/img/favicon/android-icon-192x192.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('hse-assets/img/favicon/favicon-32x32.png') }}" />
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('hse-assets/img/favicon/favicon-96x96.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('hse-assets/img/favicon/favicon-16x16.png') }}" />
-    <link rel="manifest" href="{{ asset('hse-assets/img/favicon/manifest.json') }}" />
+    <link rel="apple-touch-icon" sizes="57x57" href="" />
+    <link rel="apple-touch-icon" sizes="60x60" href="" />
+    <link rel="apple-touch-icon" sizes="72x72" href="" />
+    <link rel="apple-touch-icon" sizes="76x76" href="}" />
+    <link rel="apple-touch-icon" sizes="114x114" href="" />
+    <link rel="apple-touch-icon" sizes="120x120" href="" />
+    <link rel="apple-touch-icon" sizes="144x144" href="" />
+    <link rel="apple-touch-icon" sizes="152x152" href="" />
+    <link rel="apple-touch-icon" sizes="180x180" href="" />
+    <link rel="icon" type="image/png" sizes="192x192" href="" />
+    <link rel="icon" type="image/png" sizes="32x32" href="" />
+    <link rel="icon" type="image/png" sizes="96x96" href="" />
+    <link rel="icon" type="image/png" sizes="16x16" href="" />
+    <link rel="manifest" href="" />
     <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="{{ asset('hse-assets/img/favicon/ms-icon-144x144.png') }}" />
+    <meta name="msapplication-TileImage" content="" />
     <meta name="theme-color" content="#ffffff" />
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
     <!-- Canonical SEO -->
-    <link rel="canonical" href="https://www.nueoffshore.com/"/>
+    <link rel="canonical" href=""/>
 
-    <meta name="keywords" content="safety, safety observation card, NUE, NUE Offshore">
-    <meta name="description" content="The online safety observation card was built to help the HSE department automate her safety observation gathering process.">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="N.U.E HSE Observation Card">
-    <meta itemprop="description" content="The online safety observation card was built to help the HSE department automate her safety observation gathering process.">
-    <meta itemprop="image" content="{{ asset('hse-assets/img/favicon/favicon-32x32.png') }}">
+    <meta itemprop="name" content="">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@nueoffshore">
-    <meta name="twitter:title" content="N.U.E HSE Observation Card">
-    <meta name="twitter:description" content="The online safety observation card was built to help the HSE department automate her safety observation gathering process.">
-    <meta name="twitter:creator" content="@nueoffshore">
-    <meta name="twitter:image" content="{{ asset('hse-assets/img/favicon/favicon-32x32.png') }}">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="N.U.E HSE Observation Card" />
+    <meta property="og:title" content="" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://www.nueoffshore.com/" />
-    <meta property="og:image" content="{{ asset('hse-assets/img/favicon/favicon-32x32.png') }}" />
-    <meta property="og:description" content="The online safety observation card was built to help the HSE department automate her safety observation gathering process." />
-    <meta property="og:site_name" content="NUE Offshore" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="" />
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
@@ -188,6 +188,19 @@
         return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
         }
     </script>
+{{--
+    <script src="{{ asset('admin-asset/fullcalendar/dist/index.global.js') }}""></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>  --}}
 </head>
 
 <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset">
@@ -3452,6 +3465,9 @@
 
     <!-- JS Implementing Plugins -->
     @livewireScripts()
+
+    @stack('scripts')
+
     <script src="{{ asset('admin-assets/js/vendor.min.js') }}"></script>
 
     <script src="{{ asset('admin-assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js') }}"></script>
