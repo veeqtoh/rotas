@@ -37,7 +37,13 @@ class VanRepository
     public function update(int $id, array $data)
     {
         $van = $this->getById($id);
-        return $van->update($data);
+        $van->update($data);
+        return $van->save();
+    }
+
+    public function save(array $data)
+    {
+        return $this->van->create($data);
     }
 
 }

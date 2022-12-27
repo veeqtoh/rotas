@@ -12,4 +12,8 @@ class Van extends Model
 
     protected $fillable = ['brand', 'model', 'year', 'reg'];
 
+    // protected $casts = [
+    //     'year' => 'date:Y',
+    // ];
+
 }

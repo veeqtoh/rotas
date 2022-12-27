@@ -32,4 +32,9 @@ class VanService
     {
         return $this->vanRepository->update($id, $data);
     }
+
+    public function addVan(array $data)
+    {
+        return $this->vanRepository->save($data);
+    }
 }

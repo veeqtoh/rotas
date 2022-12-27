@@ -134,21 +134,94 @@
 
                                     <!-- Body -->
                                     <div class="modal-body">
-                                        <form wire:submit.prevent='editVan({{ $van->id }})'>
-                                            <!-- Form -->
-                                            <div class="mb-4">
-                                                <div class="mb-2 input-group mb-sm-0">
-                                                    <input wire:model.defer='name' type="text" class="form-control" name="name" min="2" placeholder="Folder New name" aria-label="Folder New name" required autofocus>
-                                                    <div class="input-group-append input-group-append-last-sm-down-none">
-                                                        <button class="btn btn-primary d-none d-sm-inline-block">rename</button>
+                                        <form wire:submit.prevent='update({{ $van->id }})'>
+                                            <!-- Brand -->
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3 mb-2 mb-sm-0">
+                                                    <div class="d-flex align-items-center mt-2">
+                                                        <i class="bi-truck nav-icon"></i>
+                                                        <div class="flex-grow-1">Brand</div>
                                                     </div>
-                                                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
+                                                <!-- End Col -->
+
+                                                <div class="col-sm">
+                                                    <label for="brand" class="visually-hidden form-label">Van Brand</label>
+
+                                                    <input wire:model.defer='brand' name="brand" type="text" class="form-control" id="brand" placeholder="{{ $van->brand }}" aria-label="Brand">
+                                                </div>
+                                                <!-- End Col -->
                                             </div>
-                                            <!-- End Form -->
-                                        </form>
+                                            <!-- End Brand -->
+
+                                            <!-- Model -->
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3 mb-2 mb-sm-0">
+                                                    <div class="d-flex align-items-center mt-2">
+                                                        <i class="bi-truck nav-icon"></i>
+                                                        <div class="flex-grow-1">Model</div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Col -->
+
+                                                <div class="col-sm">
+                                                    <label for="model" class="visually-hidden form-label">Van Model</label>
+
+                                                    <input wire:model.defer='model' name="model" type="text" class="form-control" id="model" placeholder="{{ $van->model }}" aria-label="Van Model">
+                                                </div>
+                                                <!-- End Col -->
+                                            </div>
+                                            <!-- End Model -->
+
+                                            <!-- Year -->
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3 mb-2 mb-sm-0">
+                                                    <div class="d-flex align-items-center mt-2">
+                                                        <i class="bi-truck nav-icon"></i>
+                                                        <div class="flex-grow-1">Year</div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Col -->
+
+                                                <div class="col-sm">
+                                                    <label for="year" class="visually-hidden form-label">Van Year</label>
+
+                                                    <input wire:model.defer='year' name="year" type="number" class="form-control" id="year" placeholder="{{ $van->year }}" aria-label="Van Year">
+                                                </div>
+                                                <!-- End Col -->
+                                            </div>
+                                            <!-- End Year -->
+
+                                            <!-- Reg -->
+                                            <div class="row mb-4">
+                                                <div class="col-sm-3 mb-2 mb-sm-0">
+                                                    <div class="d-flex align-items-center mt-2">
+                                                        <i class="bi-truck nav-icon"></i>
+                                                        <div class="flex-grow-1">Reg</div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Col -->
+
+                                                <div class="col-sm">
+                                                    <label for="reg" class="visually-hidden form-label">Van Reg</label>
+
+                                                    <input wire:model.defer='reg' name="reg" type="text" class="form-control" id="reg" placeholder="{{ $van->reg }}" aria-label="Van Reg">
+                                                </div>
+                                                <!-- End Col -->
+                                            </div>
+                                            <!-- End Reg -->
+
                                     </div>
                                     <!-- End Body -->
+
+                                    <!-- Footer -->
+                                    <div class="modal-footer gap-3">
+                                        <button type="button" id="discardFormt" class="btn btn-white" data-bs-dismiss="modal">Discard</button>
+                                        <button type="submit" id="processEvent" class="btn btn-primary">Update van</button>
+                                    </div>
+                                    <!-- End Footer -->
+                                </form>
+
                                 </div>
                             </div>
                         </div>
@@ -159,13 +232,14 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="deleteVanModalLabel{{ $van->id }}">Delete {{ $van->reg.' ('.$van->brand.' '.$van->model.' '.$van->year.')' }}?</h4>
+                                        <h4 class="modal-title" id="deleteVanModalLabel{{ $van->id }}">Delete {{ $van->reg.' ('.$van->brand.' '.$van->model.' '.$van->year.')' }} ?</h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
 
                                     <!-- Body -->
                                     <div class="modal-body">
-                                        <p>Are you sure you want to delete this van? This action is irreversible.</p>
+                                        <p>Are you sure?</p>
+                                        <p>This action will delete all associated shifts with this van and is irreversible.</p>
                                     </div>
                                     <!-- End Body -->
                                     <!-- Footer -->
@@ -243,6 +317,114 @@
 
     </div>
 
+    <!-- Create a new Van Modal -->
+    <div class="modal fade" id="addVanModal" tabindex="-1" aria-labelledby="addVanModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addVanModalLabel">Add Van to Fleet</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body">
+                    <form wire:submit.prevent='addVan'>
+                        <!-- Brand -->
+                        <div class="row mb-4">
+                            <div class="col-sm-3 mb-2 mb-sm-0">
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="bi-truck nav-icon"></i>
+                                    <div class="flex-grow-1">Brand</div>
+                                </div>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm">
+                                <label for="brand" class="visually-hidden form-label">Van Brand</label>
+
+                                <input wire:model.defer='brand' name="brand" type="text" class="form-control" id="brand" placeholder="Van Brand" aria-label="Brand" required>
+                                @error('brand') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Brand -->
+
+                        <!-- Model -->
+                        <div class="row mb-4">
+                            <div class="col-sm-3 mb-2 mb-sm-0">
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="bi-truck nav-icon"></i>
+                                    <div class="flex-grow-1">Model</div>
+                                </div>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm">
+                                <label for="model" class="visually-hidden form-label">Van Model</label>
+
+                                <input wire:model.defer='model' name="model" type="text" class="form-control" id="model" placeholder="Van Model" aria-label="Van Model">
+                                @error('model') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Model -->
+
+                        <!-- Year -->
+                        <div class="row mb-4">
+                            <div class="col-sm-3 mb-2 mb-sm-0">
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="bi-truck nav-icon"></i>
+                                    <div class="flex-grow-1">Year</div>
+                                </div>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm">
+                                <label for="year" class="visually-hidden form-label">Van Year</label>
+
+                                <input wire:model.defer='year' name="year" type="number" class="form-control" id="year" placeholder="Van Year" aria-label="Van Year">
+                                @error('year') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Year -->
+
+                        <!-- Reg -->
+                        <div class="row mb-4">
+                            <div class="col-sm-3 mb-2 mb-sm-0">
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="bi-truck nav-icon"></i>
+                                    <div class="flex-grow-1">Reg</div>
+                                </div>
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm">
+                                <label for="reg" class="visually-hidden form-label">Van Reg</label>
+
+                                <input wire:model.defer='reg' name="reg" type="text" class="form-control" id="reg" placeholder="Van Reg" aria-label="Van Reg">
+                                @error('reg') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Reg -->
+
+                </div>
+                <!-- End Body -->
+
+                <!-- Footer -->
+                <div class="modal-footer gap-3">
+                    <button type="button" id="discardFormt" class="btn btn-white" data-bs-dismiss="modal">Discard</button>
+                    <button type="submit" id="processEvent" class="btn btn-primary">Create van</button>
+                </div>
+                <!-- End Footer -->
+            </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Create a new Van Modal -->
+
     <!--Updated Toast -->
     <div x-data="{ open: false }" x-init="
         @this.on('notify-updated', () => {
@@ -297,6 +479,33 @@
     </div>
     <!-- End Deleted Toast -->
 
+    <!--created Toast -->
+    <div x-data="{ open: false }" x-init="
+        @this.on('notify-created', () => {
+            if (open === false) setTimeout(() => { open = false }, 2500);
+            open = true;
+
+        });" x-show.transition.out.duration.1500ms="open" style="display: none;">
+
+        <div id="renamedToast" class="position-fixed toast show" role="alert" aria-live="assertive" aria-atomic="true" style="top: 20px; right: 20px; z-index: 1000;">
+            <div class="toast-header">
+                <div class="d-flex align-items-center flex-grow-1">
+                <div class="flex-shrink-0">
+                    <img class="avatar avatar-sm avatar-circle" src="{{ asset('admin-assets/img/others/success-icon.png') }}" alt="Image description">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h5 class="mb-0">Van created!</h5>
+                    <small class="ms-auto">{{ now()->diffForHumans() }}</small>
+                </div>
+                <div class="text-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End created Toast -->
+
     @push('scripts')
         <script>
             window.addEventListener('notify-updated', event => {
@@ -305,6 +514,10 @@
             });
             window.addEventListener('notify-deleted', event => {
                 $('#deleteVanModal'+event.detail.van).modal('hide');
+                $('.modal-backdrop').remove();
+            });
+            window.addEventListener('notify-created', event => {
+                $('#addVanModal').modal('hide');
                 $('.modal-backdrop').remove();
             });
         </script>
