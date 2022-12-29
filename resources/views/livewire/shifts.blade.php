@@ -15,9 +15,9 @@
                             <div class="card-body">
 
                                 <!-- Driver -->
-                                <div class="row mb-4">
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-                                        <div class="d-flex align-items-center mt-2">
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-person nav-icon"></i>
                                             <div class="flex-grow-1">Driver</div>
                                         </div>
@@ -27,7 +27,7 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <div class="tom-select-custom">
-                                            <select wire:model.defer='driver_id.0' name="driver_id.0" class="js-select form-select w-auto" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
+                                            <select wire:model.defer='driver_id.0' name="driver_id.0" class="w-auto js-select form-select" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
                                                 "searchInDropdown": false,
                                                 "placeholder": "-- Select driver --"
                                               }' required>
@@ -45,9 +45,9 @@
                                 <!-- End Driver -->
 
                                 <!-- Van -->
-                                <div class="row mb-4">
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-                                        <div class="d-flex align-items-center mt-2">
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-truck nav-icon"></i>
                                             <div class="flex-grow-1">Van</div>
                                         </div>
@@ -57,7 +57,7 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <div class="tom-select-custom">
-                                            <select wire:model.defer='van_id.0' name="van_id.0" class="js-select form-select w-auto" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
+                                            <select wire:model.defer='van_id.0' name="van_id.0" class="w-auto js-select form-select" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
                                                           "searchInDropdown": false,
                                                           "placeholder": "-- Select van --"
                                                         }' required>
@@ -74,10 +74,10 @@
                                 </div>
                                 <!-- End Van -->
 
-                                <!-- Date -->
-                                <div class="row mb-4">
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-                                        <div class="d-flex align-items-center mt-2">
+                                {{--  <!-- Date -->
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-calendar nav-icon"></i>
                                             <div class="flex-grow-1">Date</div>
                                         </div>
@@ -87,11 +87,49 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <!-- Flatpickr -->
-                                        <input wire:model='dates.0' name="dates.0" type="text" id="myID" class="flatpickr-custom form-control mb-2" placeholder="Select dates and times">
+                                        <input wire:model='dates.0' name="dates.0" type="text" id="myID" class="mb-2 flatpickr-custom form-control" placeholder="Select dates and times">
                                         @error('dates.0') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
+                                <!-- End Date -->  --}}
+
+                                <!-- Start Date -->
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
+                                            <i class="bi-calendar nav-icon"></i>
+                                            <div class="flex-grow-1">Start Date</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col-sm">
+                                        <!-- Select -->
+                                        <!-- Flatpickr -->
+                                        <input wire:model='dates.0' name="dates.0" type="datetime-local" min=now() class="mb-2 form-control" placeholder="Select start date and time">
+                                        @error('dates.0') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                                <!-- End Start Date -->
+
                                 <!-- End Date -->
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
+                                            <i class="bi-calendar nav-icon"></i>
+                                            <div class="flex-grow-1">Date</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col-sm">
+                                        <!-- Select -->
+                                        <!-- Flatpickr -->
+                                        <input wire:model='dates.0' name="dates.0" type="text" id="myID" class="mb-2 flatpickr-custom form-control" placeholder="Select dates and times">
+                                        @error('dates.0') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                                <!-- End End Date -->
 
                                 <!-- Description -->
                                 <div class="mb-4 row">
@@ -123,9 +161,9 @@
                             <div class="card-body">
 
                                 <!-- Driver -->
-                                <div class="row mb-4">
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-                                        <div class="d-flex align-items-center mt-2">
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-person nav-icon"></i>
                                             <div class="flex-grow-1">Driver</div>
                                         </div>
@@ -135,7 +173,7 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <div class="tom-select-custom">
-                                            <select wire:model.defer='driver_id.{{ $value }}' name="driver_id.{{ $value }}" class="js-select form-select w-auto" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
+                                            <select wire:model.defer='driver_id.{{ $value }}' name="driver_id.{{ $value }}" class="w-auto js-select form-select" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
                                                 "searchInDropdown": false,
                                                 "placeholder": "-- Select driver --"
                                               }' required>
@@ -153,9 +191,9 @@
                                 <!-- End Driver -->
 
                                 <!-- Van -->
-                                <div class="row mb-4">
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-                                        <div class="d-flex align-items-center mt-2">
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-truck nav-icon"></i>
                                             <div class="flex-grow-1">Van</div>
                                         </div>
@@ -165,7 +203,7 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <div class="tom-select-custom">
-                                            <select wire:model.defer='van_id.{{ $value }}' name="van_id.{{ $value }}" class="js-select form-select w-auto" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
+                                            <select wire:model.defer='van_id.{{ $value }}' name="van_id.{{ $value }}" class="w-auto js-select form-select" autocomplete="off" id="eventColorLabel" data-hs-tom-select-options='{
                                                           "searchInDropdown": false,
                                                           "placeholder": "-- Select van --"
                                                         }' required>
@@ -183,9 +221,9 @@
                                 <!-- End Van -->
 
                                 <!-- Date -->
-                                <div class="row mb-4">
-                                    <div class="col-sm-3 mb-2 mb-sm-0">
-                                        <div class="d-flex align-items-center mt-2">
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-calendar nav-icon"></i>
                                             <div class="flex-grow-1">Date</div>
                                         </div>
@@ -195,7 +233,7 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <!-- Flatpickr -->
-                                        <input wire:model='dates.{{ $value }}' name="dates.{{ $value }}" type="text" id="myID" class="flatpickr-custom form-control mb-2" placeholder="Select dates and times">
+                                        <input wire:model='dates.{{ $value }}' name="dates.{{ $value }}" type="text" id="myID" class="mb-2 flatpickr-custom form-control" placeholder="Select dates and times">
                                         @error('dates.{{ $value }}') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
