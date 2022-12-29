@@ -17,8 +17,8 @@ class ShiftResource extends JsonResource
         return [
             'uuid' => $this->resource->uuid,
             'van' => $this->resource->van->reg.' ('.$this->resource->van->brand.' - '.$this->resource->van->model.')',
-            'start'  =>  $this->resource->start_time,
-            'ends'  =>  $this->resource->end_time,
+            'start'  =>  $this->resource->start_time->format('y-m-d H:i:s'),
+            'ends'  =>  $this->resource->end_time->format('y-m-d H:i:s'),
             'description'  =>  $this->resource->description,
         ];
     }

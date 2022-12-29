@@ -33,7 +33,7 @@ class UserResource extends JsonResource
             'addressLine1'  =>  $this->resource->driver->address_line_1,
             'addressLine2'  =>  $this->resource->driver->address_line_2,
             'maritalStatus'  =>  $this->resource->driver->marital_status,
-            'createdAt'  =>  $this->resource->created_at
+            'createdAt'  =>  $this->resource->created_at->format('y-m-d H:i:s')
         ];
     }
 }
