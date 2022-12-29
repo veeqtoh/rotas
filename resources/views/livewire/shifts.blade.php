@@ -106,8 +106,8 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <!-- Flatpickr -->
-                                        <input wire:model='dates.0' name="dates.0" type="datetime-local" min=now() class="mb-2 form-control" placeholder="Select start date and time">
-                                        @error('dates.0') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <input wire:model='start_date.0' name="start_date.0" type="datetime-local" class="mb-2 form-control">
+                                        @error('start_date.0') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <!-- End Start Date -->
@@ -117,7 +117,7 @@
                                     <div class="mb-2 col-sm-3 mb-sm-0">
                                         <div class="mt-2 d-flex align-items-center">
                                             <i class="bi-calendar nav-icon"></i>
-                                            <div class="flex-grow-1">Date</div>
+                                            <div class="flex-grow-1">End Date</div>
                                         </div>
                                     </div>
                                     <!-- End Col -->
@@ -125,8 +125,8 @@
                                     <div class="col-sm">
                                         <!-- Select -->
                                         <!-- Flatpickr -->
-                                        <input wire:model='dates.0' name="dates.0" type="text" id="myID" class="mb-2 flatpickr-custom form-control" placeholder="Select dates and times">
-                                        @error('dates.0') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <input wire:model='end_date.0' name="end_date.0" type="datetime-local" class="mb-2 form-control">
+                                        @error('end_date.0') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <!-- End End Date -->
@@ -220,7 +220,7 @@
                                 </div>
                                 <!-- End Van -->
 
-                                <!-- Date -->
+                                {{--  <!-- Date -->
                                 <div class="mb-4 row">
                                     <div class="mb-2 col-sm-3 mb-sm-0">
                                         <div class="mt-2 d-flex align-items-center">
@@ -237,7 +237,45 @@
                                         @error('dates.{{ $value }}') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
+                                <!-- End Date -->  --}}
+
+                                <!-- Start Date -->
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
+                                            <i class="bi-calendar nav-icon"></i>
+                                            <div class="flex-grow-1">Start Date</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col-sm">
+                                        <!-- Select -->
+                                        <!-- Flatpickr -->
+                                        <input wire:model='start_date.{{ $value }}' name="start_date.{{ $value }}" type="datetime-local" class="mb-2 form-control">
+                                        @error('start_date.{{ $value }}') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                                <!-- End Start Date -->
+
                                 <!-- End Date -->
+                                <div class="mb-4 row">
+                                    <div class="mb-2 col-sm-3 mb-sm-0">
+                                        <div class="mt-2 d-flex align-items-center">
+                                            <i class="bi-calendar nav-icon"></i>
+                                            <div class="flex-grow-1">End Date</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col-sm">
+                                        <!-- Select -->
+                                        <!-- Flatpickr -->
+                                        <input wire:model='end_date.{{ $value }}' name="end_date.{{ $value }}" type="datetime-local" class="mb-2 form-control">
+                                        @error('end_date.{{ $value }}') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                                <!-- End End Date -->
 
                                 <!-- Description -->
                                 <div class="mb-4 row">

@@ -12,14 +12,15 @@ class Shifts extends Component
     private VanService $vanService;
     private DriverService $driverService;
 
-    public $driver_id, $van_id, $dates, $description;
+    public $driver_id, $van_id, $start_date, $end_date, $description;
     public $inputs = [];
     public $i = 1;
 
     protected $messages = [
         'driver_id.0.required' => 'Please select a driver',
         'van_id.0.required' => 'Please select a van',
-        'dates.0.required' => 'A valid date and time is required',
+        'start_date.required' => 'A valid date and time is required',
+        'end_date.required' => 'A valid date and time is required',
         'description.0.required' => 'Description is required',
     ];
 
@@ -35,19 +36,20 @@ class Shifts extends Component
         $this->validate([
             'driver_id.0' => 'required',
             'van_id.0' => 'required',
-            'dates.0' => 'required',
+            'start_date.0' => 'required',
+            'end_date.0' => 'required',
             'description.0' => 'required',
         ]);
 
         foreach ($this->driver_id as $key => $value) {
 
-            $exploded = explode("to", $this->dates[0]);
+            // $exploded = explode("to", $this->dates[0]);
 
             Shift::create([
                 'driver_id' => !empty($this->driver_id[$key]) ? $this->driver_id[$key] : '',
                 'van_id' => !empty($this->van_id[$key]) ? $this->van_id[$key] : '',
-                'start_time' => $exploded[0],
-                'end_time' => $exploded[1],
+                'start_time' => !empty($this->start_date[$key]) ? $this->start_date[$key] : '',
+                'end_time' => !empty($this->end_date[$key]) ? $this->end_date[$key] : '',
                 'description' => !empty($this->description[$key]) ? $this->description[$key] : '',
             ]);
         }

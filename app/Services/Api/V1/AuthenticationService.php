@@ -41,13 +41,13 @@ class AuthenticationService
     public function userDetails(User $user): array
     {
         $now = Carbon::now();
-        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
-        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+        $weekStartDate = $now->startOfWeek(Carbon::SUNDAY)->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek(Carbon::SATURDAY)->format('Y-m-d H:i');
 
         return  [
             'auth_token' => $this->createAuthToken($user),
             'user' => UserResource::make($user),
-            'shifts' => ShiftCollection::make($user->driver->shifts->whereBetween('start_time', [$weekStartDate, $weekEndDate] )),
+            'shifts' => ShiftCollection::make($user->driver->shifts->whereBetween('start_time', [$weekStartDate, $weekEndDate] )->sortByDesc('start_time')),
             // 'permissions' => $user->getAllPermissions()
         ];
     }
