@@ -29,6 +29,7 @@ class ShiftRepository
         $shift->update([
             'clock_in_time' => $clock_in_time,
             'clock_in_ip' => $clock_in_ip,
+            'started' => 1,
         ]);
         $shift->save();
         return $shift;
