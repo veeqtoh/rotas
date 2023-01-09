@@ -11,7 +11,7 @@ class Shift extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['rota_id', 'driver_id', 'van_id', 'start_time', 'started', 'end_time', 'description',
+    protected $fillable = ['rota_id', 'driver_id', 'van_id', 'start_time', 'started', 'end_time', 'ended', 'description',
     'clock_in_time', 'clock_out_time', 'clock_in_location', 'clock_out_location', 'clock_in_ip', 'clock_out_ip'];
 
     public static function booted()
