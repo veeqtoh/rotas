@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Services\Api\V1;
 
+use App\Http\Resources\Api\V1\ShiftResource;
 use App\Http\VeeqPayload;
 use App\Repositories\ShiftRepository;
 
@@ -15,8 +16,8 @@ class ShiftService
 
     public function startShift(string $uuid, $clock_in_time, $clock_in_ip): VeeqPayload
     {
-        $this->shiftRepository->start($uuid, $clock_in_time, $clock_in_ip);
-        $this->payload->setPayload(true, 'Shift started');
+        $shift = $this->shiftRepository->start($uuid, $clock_in_time, $clock_in_ip);
+        $this->payload->setPayload(true, 'Shift started', new ShiftResource($shift));
         return $this->payload;
     }
 

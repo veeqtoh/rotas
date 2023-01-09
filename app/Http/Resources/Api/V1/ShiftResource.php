@@ -20,6 +20,9 @@ class ShiftResource extends JsonResource
             'starts'  =>  $this->resource->start_time->format('Y-m-d H:i:s'),
             'started'  =>  $this->resource->started,
             'ends'  =>  $this->resource->end_time->format('Y-m-d H:i:s'),
+            'ended'  =>  $this->resource->ended,
+            'clockInTime'  =>  optional($this->resource->clock_in_time)->format('Y-m-d H:i:s'),
+            'clockOutTime'  =>  optional($this->resource->clock_out_time)->format('Y-m-d H:i:s'),
             'description'  =>  $this->resource->description,
         ];
     }
