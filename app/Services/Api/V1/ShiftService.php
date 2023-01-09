@@ -23,8 +23,8 @@ class ShiftService
 
     public function endShift(string $uuid, $clock_out_time, $clock_out_ip): VeeqPayload
     {
-        $this->shiftRepository->end($uuid, $clock_out_time, $clock_out_ip);
-        $this->payload->setPayload(true, 'Shift ended');
+        $shift = $this->shiftRepository->end($uuid, $clock_out_time, $clock_out_ip);
+        $this->payload->setPayload(true, 'Shift ended', new ShiftResource($shift));
         return $this->payload;
     }
 }

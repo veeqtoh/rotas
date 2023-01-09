@@ -41,6 +41,7 @@ class ShiftRepository
         $shift->update([
             'clock_out_time' => $clock_out_time,
             'clock_out_ip' => $clock_out_ip,
+            'ended' => 1,
         ]);
         $shift->save();
         return $shift;
