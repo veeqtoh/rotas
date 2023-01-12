@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('rota_id')->constrained()->cascadeOnDelete();
             $table->foreignId('driver_id')->constrained()->cascadeOnDelete();
             $table->foreignId('van_id')->constrained()->cascadeOnDelete();
-            $table->timestamp('start_time');
+            $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->string('description');
             $table->timestamp('clock_in_time')->nullable();
