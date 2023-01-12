@@ -329,7 +329,7 @@
                                     <span class="mb-0 d-block h5">Driver</span>
                                     <span class="d-block fs-5">10 Completed deliveries</span>
                                 </td>
-                                <td>{{ $driver->employment_date->diffForHumans() }}</td>
+                                <td>{{ optional($driver->employment_date)->diffForHumans() }}</td>
                                 <td>
                                     <span class="legend-indicator {{  ($driver->user->isActive()) ? 'bg-success' : 'bg-warning' }}"></span>{{  ($driver->user->isActive()) ? 'Active' : 'Inactive' }}
                                 </td>
