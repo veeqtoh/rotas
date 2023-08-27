@@ -7,7 +7,7 @@
 *.php diff=php
 *.html linguist-detectable=false
 *.js linguist-detectable=false
-*.blade linguist-detectable=false
+*.blade.php linguist-detectable=false
 *.css linguist-detectable=false
 /.github export-ignore
 CHANGELOG.md export-ignore
